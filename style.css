@@ -1,0 +1,411 @@
+/* Hunting Box - Shard-Tracker
+   Optik: das Item-Tooltip aus dem Spiel als Baustein der Seite. */
+
+:root {
+  --ink:        #0a0810;
+  --panel:      #120d1d;
+  --panel-2:    #171126;
+  --edge:       #2b1f45;
+  --edge-lit:   #4a2f86;
+  --text:       #cfc7de;
+  --text-dim:   #857a9c;
+  --text-bright:#f2eefa;
+
+  --common:     #d3cfda;
+  --uncommon:   #55ff55;
+  --rare:       #7d97ff;
+  --epic:       #c261ff;
+  --legendary:  #ffaa00;
+
+  --good:       #55ff55;
+  --warn:       #ff7b6b;
+
+  --shadow: 0 12px 30px rgba(0,0,0,.55);
+  --r: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 620px at 50% -12%, #23164a 0%, transparent 62%),
+    var(--ink);
+  color: var(--text);
+  font-family: "Chakra Petch", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+a { color: var(--rare); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--text-bright); }
+
+.wrap { width: min(1180px, 92vw); margin-inline: auto; }
+
+/* ---------- Kopfbereich ---------- */
+
+.masthead { padding: clamp(2.5rem, 7vw, 5rem) 0 2.25rem; }
+
+.eyebrow {
+  font-family: "Silkscreen", monospace;
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 0 0 .7rem;
+}
+
+h1 {
+  font-family: "Silkscreen", monospace;
+  font-weight: 700;
+  font-size: clamp(2.1rem, 7.5vw, 4.1rem);
+  line-height: 1.02;
+  letter-spacing: -.01em;
+  margin: 0 0 .55rem;
+  color: var(--text-bright);
+  text-shadow: 3px 3px 0 #150e29;
+}
+.h1-break { display: block; height: 0; }
+
+.lede {
+  max-width: 46ch;
+  margin: 0 0 2rem;
+  color: var(--text-dim);
+  font-size: 1.02rem;
+}
+
+.lookup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) auto;
+  gap: 1rem;
+  align-items: start;
+  max-width: 860px;
+}
+
+.field label {
+  display: block;
+  font-family: "Silkscreen", monospace;
+  font-size: .6rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: .45rem;
+}
+
+input[type=text], input[type=password], input[type=search], select {
+  width: 100%;
+  padding: .68rem .8rem;
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: var(--r);
+  color: var(--text-bright);
+  font: inherit;
+  font-size: .95rem;
+}
+input::placeholder { color: #5b5273; }
+input:focus-visible, select:focus-visible, button:focus-visible {
+  outline: 2px solid var(--edge-lit);
+  outline-offset: 2px;
+}
+
+.hint { margin: .45rem 0 0; font-size: .78rem; color: var(--text-dim); }
+
+.go {
+  align-self: end;
+  padding: .7rem 1.5rem;
+  font-family: "Silkscreen", monospace;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  color: #120d1d;
+  background: linear-gradient(#ffc247, #ffaa00);
+  border: 1px solid #a86f00;
+  border-radius: var(--r);
+  box-shadow: 0 3px 0 #7d5200;
+  cursor: pointer;
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+.go:hover { transform: translateY(1px); box-shadow: 0 2px 0 #7d5200; }
+.go:active { transform: translateY(3px); box-shadow: none; }
+.go[disabled] { opacity: .55; cursor: progress; }
+
+.remember {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1rem;
+  font-size: .85rem;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.remember input { accent-color: var(--legendary); }
+
+.status { margin: 1.1rem 0 0; font-size: .9rem; min-height: 1.4rem; }
+.status.err { color: var(--warn); }
+.status.busy { color: var(--text-dim); }
+
+/* ---------- Zusammenfassung ---------- */
+
+.summary {
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: var(--r);
+  padding: 1.35rem 1.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.25rem;
+}
+
+.profile-pick { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; }
+.player-name {
+  font-family: "Silkscreen", monospace;
+  font-size: 1.15rem;
+  color: var(--text-bright);
+}
+#profileSelect { width: auto; min-width: 9rem; }
+
+.ghost {
+  padding: .55rem 1rem;
+  background: transparent;
+  border: 1px solid var(--edge);
+  border-radius: var(--r);
+  color: var(--text);
+  font: inherit;
+  font-size: .85rem;
+  cursor: pointer;
+}
+.ghost:hover { border-color: var(--edge-lit); color: var(--text-bright); }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 1rem 1.75rem;
+}
+.stat-n {
+  font-family: "Silkscreen", monospace;
+  font-size: 1.45rem;
+  color: var(--text-bright);
+  display: block;
+  line-height: 1.2;
+}
+.stat-l {
+  font-size: .78rem;
+  color: var(--text-dim);
+  letter-spacing: .02em;
+}
+.stat.is-good .stat-n { color: var(--good); }
+.stat.is-warn .stat-n { color: var(--warn); }
+
+/* Fortschrittsleiste: gemaxt / angefangen / offen */
+.meter {
+  display: flex;
+  height: 7px;
+  margin-top: 1.25rem;
+  border: 1px solid var(--edge);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #0d0916;
+}
+.meter span { display: block; height: 100%; }
+.meter .m-max  { background: var(--legendary); }
+.meter .m-part { background: var(--edge-lit); }
+
+/* ---------- Tabs & Filter ---------- */
+
+.ready {
+  margin: .85rem 0 0;
+  font-size: .85rem;
+  color: var(--good);
+}
+
+.tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+.tab {
+  padding: .5rem .95rem;
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: var(--r);
+  color: var(--text-dim);
+  font: inherit;
+  font-size: .88rem;
+  cursor: pointer;
+}
+.tab:hover { color: var(--text-bright); }
+.tab[aria-selected="true"] {
+  background: var(--panel-2);
+  border-color: var(--edge-lit);
+  color: var(--text-bright);
+}
+.tab b { font-family: "Silkscreen", monospace; font-size: .72rem; font-weight: 400; opacity: .75; margin-left: .35rem; }
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(4, minmax(0, 1fr));
+  gap: .6rem;
+  margin-bottom: 1rem;
+}
+
+.count { margin: 0 0 1rem; font-size: .82rem; color: var(--text-dim); }
+.empty { color: var(--text-dim); padding: 2rem 0; }
+
+/* ---------- Shard-Karte: Item-Tooltip aus dem Spiel ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
+  gap: 1rem;
+  padding-bottom: 3rem;
+}
+
+.card {
+  position: relative;
+  background: #0f0a1b;
+  border: 2px solid var(--edge);
+  border-radius: 2px;
+  padding: .95rem 1.05rem 1.05rem;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, border-color .12s ease;
+}
+.card::before {           /* der violette Innenrahmen des MC-Tooltips */
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px solid #241738;
+  border-radius: 1px;
+  pointer-events: none;
+}
+.card:hover { transform: translateY(-2px); border-color: var(--edge-lit); }
+
+.card-top { display: flex; align-items: baseline; gap: .55rem; }
+
+.shard-mark {                /* kleiner Kristall in Rarity-Farbe */
+  width: 9px; height: 13px;
+  flex: none;
+  align-self: center;
+  clip-path: polygon(50% 0, 100% 32%, 78% 100%, 22% 100%, 0 32%);
+  background: currentColor;
+  opacity: .9;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+.card .rar {
+  margin-left: auto;
+  font-family: "Silkscreen", monospace;
+  font-size: .56rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .8;
+  white-space: nowrap;
+}
+
+.attr {
+  margin: .5rem 0 0;
+  font-size: .9rem;
+  color: var(--legendary);
+}
+.effect {
+  margin: .15rem 0 0;
+  font-size: .84rem;
+  color: var(--text-dim);
+}
+
+/* Level: zehn Kaestchen wie die zehn Stufen im Spiel */
+.level {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: .85rem 0 .1rem;
+}
+.pips { display: flex; gap: 2px; }
+.pip {
+  width: 11px; height: 11px;
+  border: 1px solid #2a1e42;
+  background: #120c20;
+}
+.pip.on { background: currentColor; border-color: transparent; }
+.roman {
+  font-family: "Silkscreen", monospace;
+  font-size: .72rem;
+  color: var(--text-bright);
+  min-width: 2.6rem;
+}
+.level-num { font-size: .8rem; color: var(--text-dim); }
+
+.lore {
+  margin: .8rem 0 0;
+  padding-top: .75rem;
+  border-top: 1px solid #221635;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: .755rem;
+  line-height: 1.65;
+  color: var(--text-dim);
+}
+.lore p { margin: 0 0 .2rem; }
+.lore .how { color: #9ad9a0; }
+.lore .rule { color: #b79cff; }
+.lore .fuse { color: var(--text-dim); }
+.lore .lbl { color: #6f6489; }
+
+.tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .8rem; }
+.tag {
+  font-size: .67rem;
+  letter-spacing: .04em;
+  padding: .12rem .45rem;
+  border: 1px solid var(--edge);
+  border-radius: 2px;
+  color: var(--text-dim);
+}
+.tag.box { border-color: #3d6b3f; color: var(--good); }
+.tag.fusion-only { border-color: #6b3a3a; color: var(--warn); }
+
+/* Rarity faerbt Name, Kristall und Pips */
+.r-Common    { color: var(--common); }
+.r-Uncommon  { color: var(--uncommon); }
+.r-Rare      { color: var(--rare); }
+.r-Epic      { color: var(--epic); }
+.r-Legendary { color: var(--legendary); }
+
+/* ---------- Fuss ---------- */
+
+.foot {
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--edge);
+  color: var(--text-dim);
+  font-size: .82rem;
+}
+.foot p { margin: 0 0 .4rem; max-width: 62ch; }
+.foot-meta { font-family: "JetBrains Mono", monospace; font-size: .74rem; opacity: .8; }
+
+/* ---------- Klein & barrierearm ---------- */
+
+@media (max-width: 860px) {
+  .lookup { grid-template-columns: 1fr; }
+  .go { width: 100%; }
+  .controls { grid-template-columns: 1fr 1fr; }
+  .grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+.card {
+  animation: rise .28s ease both;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}

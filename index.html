@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hunting Box &mdash; Shard-Tracker fuer Hypixel SkyBlock</title>
+<meta name="description" content="Zeigt dir, welche Attribut-Shards dir fehlen, auf welchem Level sie stehen und wie du sie bekommst.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Hypixel SkyBlock</p>
+    <h1>Hunting<span class="h1-break"> </span>Box</h1>
+    <p class="lede">Welche Attribut-Shards dir noch fehlen, wie weit die anderen sind &mdash; und wo du sie herbekommst.</p>
+
+    <form id="lookup" class="lookup" autocomplete="off">
+      <div class="field">
+        <label for="username">Minecraft-Name</label>
+        <input id="username" name="username" type="text" placeholder="z.B. Technoblade" spellcheck="false" required>
+      </div>
+      <div class="field">
+        <label for="apikey">Dein Hypixel-API-Key</label>
+        <input id="apikey" name="apikey" type="password" placeholder="8 Bloecke, mit Bindestrichen" spellcheck="false" required>
+        <p class="hint">Holst du dir bei <a href="https://developer.hypixel.net/dashboard" target="_blank" rel="noopener">developer.hypixel.net</a>. Bleibt in deinem Browser.</p>
+      </div>
+      <button type="submit" class="go" id="go">Profil laden</button>
+    </form>
+
+    <label class="remember">
+      <input type="checkbox" id="remember" checked>
+      <span>Key auf diesem Geraet merken</span>
+    </label>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </div>
+</header>
+
+<main id="results" class="wrap" hidden>
+
+  <section class="summary" id="summary">
+    <div class="summary-head">
+      <div>
+        <p class="eyebrow">Profil</p>
+        <div class="profile-pick">
+          <span id="playerName" class="player-name"></span>
+          <select id="profileSelect" aria-label="Profil waehlen"></select>
+        </div>
+      </div>
+      <button class="ghost" id="csv" type="button">Als CSV speichern</button>
+    </div>
+
+    <div class="stats" id="stats"></div>
+    <div class="meter" id="meter" aria-hidden="true"></div>
+    <p class="ready" id="ready" hidden></p>
+  </section>
+
+  <nav class="tabs" id="tabs" role="tablist"></nav>
+
+  <section class="controls">
+    <input type="search" id="search" placeholder="Shard, Attribut oder Fundort suchen" aria-label="Suchen">
+    <select id="fRarity" aria-label="Rarity filtern">
+      <option value="">Alle Rarities</option>
+      <option>Common</option><option>Uncommon</option><option>Rare</option>
+      <option>Epic</option><option>Legendary</option>
+    </select>
+    <select id="fCategory" aria-label="Kategorie filtern">
+      <option value="">Alle Kategorien</option>
+      <option>Forest</option><option>Water</option><option>Combat</option>
+    </select>
+    <select id="fSource" aria-label="Beschaffung filtern">
+      <option value="">Beschaffung: egal</option>
+      <option value="direct">Direkt jagdbar</option>
+      <option value="fusion">Nur Fusion</option>
+    </select>
+    <select id="fSort" aria-label="Sortierung">
+      <option value="default">Auto-Sortierung</option>
+      <option value="name">Name A&ndash;Z</option>
+      <option value="rarity">Rarity</option>
+      <option value="remaining">Fast fertig zuerst</option>
+    </select>
+  </section>
+
+  <p class="count" id="count"></p>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>Nichts gefunden. Filter zuruecksetzen?</p>
+
+</main>
+
+<footer class="foot wrap">
+  <p>Shard-Daten aus dem offenen <a href="https://github.com/Campionnn/SkyShards" target="_blank" rel="noopener">SkyShards</a>-Datensatz, Profildaten direkt von der Hypixel-API. Kein Server dazwischen &mdash; die Seite laeuft komplett in deinem Browser.</p>
+  <p class="foot-meta"><span id="dbCount"></span> Shards in der Datenbank &middot; nicht mit Hypixel affiliiert</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
