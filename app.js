@@ -35,6 +35,11 @@ const state = {
   totals: null,
   detailId: null,
   detailOwnedOnly: false,
+  detailReadyOnly: false,
+  recipes: null,
+  recipesTried: false,
+  rowById: new Map(),
+  shardIdIndex: new Map(),
 };
 
 /* ---------- Rechnen ---------- */
@@ -142,6 +147,8 @@ function buildRows(member) {
       ...lv,
     });
   }
+
+  state.rowById = new Map(rows.map((r) => [r.id, r]));
 
   state.totals = {
     total: rows.length,
@@ -403,6 +410,64 @@ function slotHTML(label, rule, onlyOwned, excludeId) {
   </div>`;
 }
 
+/* Fuer Shards ohne allgemeine Regel liegen die konkreten Kombis in recipes.json.
+   Die Datei ist gross, also erst beim ersten Detail-Klick holen. */
+async function loadRecipes() {
+  if (state.recipes || state.recipesTried) return;
+  state.recipesTried = true;
+  try {
+    state.recipes = await getJSON("recipes.json");
+  } catch {
+    state.recipes = {};
+  }
+}
+
+function comboList(id) {
+  const raw = (state.recipes || {})[id];
+  if (!raw) return [];
+  const byShardId = state.shardIdIndex;
+  return raw.map(([a, b, qty]) => {
+    const ra = state.rowById.get(byShardId.get(a));
+    const rb = state.rowById.get(byShardId.get(b));
+    if (!ra || !rb) return null;
+    return { a: ra, b: rb, qty: qty || 1, ready: ra.box > 0 && rb.box > 0, half: (ra.box > 0) !== (rb.box > 0) };
+  }).filter(Boolean).sort((x, y) =>
+    y.ready - x.ready ||
+    y.half - x.half ||
+    (RARITIES.indexOf(x.a.info.rarity) + RARITIES.indexOf(x.b.info.rarity)) -
+    (RARITIES.indexOf(y.a.info.rarity) + RARITIES.indexOf(y.b.info.rarity)) ||
+    x.a.info.name.localeCompare(y.a.info.name));
+}
+
+function ingredientHTML(r) {
+  const st = r.box > 0 ? `<span class="ing-box">${r.box}x</span>` : "";
+  return `<button type="button" class="ing r-${r.info.rarity}" data-open="${esc(r.id)}">${esc(r.info.name)}${st}</button>`;
+}
+
+function combosHTML(id, onlyReady) {
+  let list = comboList(id);
+  const total = list.length;
+  if (!total) return "";
+  if (onlyReady) list = list.filter((c) => c.ready);
+
+  const CAP = 200;
+  const shown = list.slice(0, CAP);
+  const items = shown.map((c) => `<li class="combo${c.ready ? " is-ready" : ""}">
+      ${ingredientHTML(c.a)}<span class="plus">+</span>${ingredientHTML(c.b)}
+      ${c.qty > 1 ? `<span class="qty">= ${c.qty}x</span>` : ""}
+    </li>`).join("");
+
+  return `<div class="d-block">
+    <h3>Alle Kombis, die diesen Shard ergeben</h3>
+    <label class="d-filter"><input type="checkbox" id="readyOnly" ${onlyReady ? "checked" : ""}>
+      <span>Nur Kombis, fuer die ich beide Zutaten in der Box habe</span></label>
+    <p class="d-none">${onlyReady ? `${list.length} von ${total}` : `${total} Kombis`}${
+      list.length > CAP ? ` &middot; zeigt die ersten ${CAP}` : ""}</p>
+    ${items ? `<ul class="combo-list">${items}</ul>`
+            : '<p class="d-none">Keine Kombi, bei der beide Zutaten schon in deiner Box liegen.</p>'}
+  </div>`;
+}
+
 function openDetail(id) {
   const row = state.rows.find((r) => r.id === id);
   if (!row) return;
@@ -444,11 +509,21 @@ function openDetail(id) {
         ${slotHTML("Slot 2", r2, onlyOwned, id)}
       </div>
     </div>`);
-  } else if (!direct.length) {
-    parts.push('<div class="d-block"><p class="d-none">Fuer diesen Shard ist keine Fusions-Regel hinterlegt.</p></div>');
   }
 
-  if ((i.fusion_examples || []).length) {
+  const combos = combosHTML(id, state.detailReadyOnly);
+  if (combos) {
+    if (!(r1 || r2)) {
+      parts.push('<div class="d-block"><h3>Fusion</h3>' +
+        '<p class="d-none">Fuer diesen Shard gibt es keine allgemeine Regel &mdash; ' +
+        'er entsteht nur aus festen Kombinationen.</p></div>');
+    }
+    parts.push(combos);
+  } else if (!(r1 || r2) && !direct.length) {
+    parts.push('<div class="d-block"><p class="d-none">Fuer diesen Shard ist keine Fusion hinterlegt.</p></div>');
+  }
+
+  if (!combos && (i.fusion_examples || []).length) {
     parts.push(`<div class="d-block"><h3>Fertige Kombis</h3><div class="d-lore">
       ${i.fusion_examples.map((e) => `<p class="fuse">&bull; ${esc(e)}</p>`).join("")}</div></div>`);
   }
@@ -456,6 +531,10 @@ function openDetail(id) {
   $("detailBody").innerHTML = parts.join("");
   const dlg = $("detail");
   if (!dlg.open) dlg.showModal();
+
+  if (!state.recipes && !i.fuse_inputs[0]) {
+    loadRecipes().then(() => { if (state.detailId === id) openDetail(id); });
+  }
 }
 
 /* ---------- CSV ---------- */
@@ -577,6 +656,7 @@ function explain(err) {
   }
   for (const [id, info] of Object.entries(state.db)) {
     if (info.attribute_id) state.byAttrId.set(String(info.attribute_id).toLowerCase(), id);
+    if (info.shard_id) state.shardIdIndex.set(info.shard_id, id);
   }
   $("dbCount").textContent = Object.keys(state.db).length;
 
@@ -635,12 +715,16 @@ function explain(err) {
 
   // Im Dialog: Klick auf einen Kandidaten springt zu dessen Details
   $("detailBody").addEventListener("click", (e) => {
-    const pick = e.target.closest(".pick");
+    const pick = e.target.closest(".pick, .ing");
     if (pick) { openDetail(pick.dataset.open); return; }
   });
   $("detailBody").addEventListener("change", (e) => {
     if (e.target.id === "ownedOnly") {
       state.detailOwnedOnly = e.target.checked;
+      openDetail(state.detailId);
+    }
+    if (e.target.id === "readyOnly") {
+      state.detailReadyOnly = e.target.checked;
       openDetail(state.detailId);
     }
   });

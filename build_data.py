@@ -130,9 +130,31 @@ def main():
     with open("shards.json", "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
 
+    # Shards ohne allgemeine Regel: dort sind die konkreten Kombis die einzige
+    # Auskunft. Kommen in eine eigene Datei, die die Seite erst beim ersten
+    # Detail-Klick nachlaedt (~170 KB gezippt).
+    combos = {}
+    for api, info in out.items():
+        if info["fuse_inputs"][0]:
+            continue                      # hat eine Regel, laesst sich berechnen
+        seen, pairs = set(), []
+        for qty, pl in (recipes.get(info["shard_id"]) or {}).items():
+            for a, b in pl:
+                key = tuple(sorted((a, b))) + (qty,)
+                if key in seen:
+                    continue
+                seen.add(key)
+                pairs.append([a, b, int(qty)] if int(qty) > 1 else [a, b])
+        if pairs:
+            combos[api] = pairs
+
+    with open("recipes.json", "w", encoding="utf-8") as f:
+        json.dump(combos, f, separators=(",", ":"))
+
     direct = sum(1 for i in out.values() if i["obtainable_directly"])
     print(f"OK: {len(out)} Shards -> shards.json")
     print(f"     davon {direct} direkt erhaeltlich, {len(out) - direct} nur durch Fusion")
+    print(f"OK: Kombis fuer {len(combos)} Shards ohne Regel -> recipes.json")
 
 
 if __name__ == "__main__":

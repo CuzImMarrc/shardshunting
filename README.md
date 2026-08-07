@@ -9,7 +9,8 @@ seinen eigenen Hypixel-API-Key; der bleibt im Browser und geht ausschließlich a
 ## Online stellen (GitHub Pages)
 
 1. Neues öffentliches Repository anlegen.
-2. Diese Dateien ins Repo-Root laden: `index.html`, `style.css`, `app.js`, `shards.json`.
+2. Diese Dateien ins Repo-Root laden: `index.html`, `style.css`, `app.js`, `shards.json`,
+   `recipes.json`.
 3. **Settings → Pages → Source: Deploy from a branch**, Branch `main`, Ordner `/ (root)`, speichern.
 4. Nach ein paar Minuten liegt die Seite unter `https://<dein-name>.github.io/<repo>/`.
 
@@ -47,6 +48,11 @@ Ein Klick auf eine Shard-Karte öffnet die Detailansicht. Hat der Shard eine Fus
 sie für Slot 1 und Slot 2 alle Shards auf, die dort tatsächlich hineinpassen — mit dem Hinweis, was
 davon schon in der eigenen Hunting Box liegt. Ein Klick auf einen Kandidaten springt zu dessen
 Details, so lässt sich eine Fusionskette rückwärts verfolgen.
+
+Nur 98 der 321 Shards haben eine solche allgemeine Regel. Die übrigen entstehen aus festen
+Kombinationen — die stehen in `recipes.json` und werden erst beim ersten Klick auf eine Karte
+nachgeladen (~165 KB gzip). Für diese Shards zeigt die Detailansicht statt der Slots die komplette
+Kombiliste, mit Filter auf das, was man sofort fusen kann.
 
 Die Regeln stehen maschinenlesbar in `shards.json` unter `fuse_inputs`, z.B.
 `["Forest&Legendary", "Elemental&Epic+"]`. Die Syntax: `&` = und, `|` = oder, `X+` = X oder höher,

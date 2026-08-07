@@ -432,8 +432,8 @@ button.tag[aria-pressed="true"] { border-color: var(--edge-lit); color: var(--te
 .card:focus-visible { outline: 2px solid var(--edge-lit); outline-offset: 2px; }
 
 .detail {
-  width: min(940px, 94vw);
-  max-height: 88vh;
+  width: min(1120px, 96vw);
+  max-height: 90vh;
   padding: 0;
   background: var(--panel);
   border: 2px solid var(--edge-lit);
@@ -455,10 +455,10 @@ button.tag[aria-pressed="true"] { border-color: var(--edge-lit); color: var(--te
 }
 .detail-close:hover { color: var(--text-bright); }
 
-#detailBody { padding: 1.4rem 1.5rem 1.6rem; }
+#detailBody { padding: 1.7rem 1.9rem 2rem; }
 
 .d-head { display: flex; align-items: center; gap: .55rem; padding-right: 2rem; }
-.d-head h2 { margin: 0; font-size: 1.35rem; font-weight: 600; }
+.d-head h2 { margin: 0; font-size: 1.6rem; font-weight: 600; }
 .d-head .rar {
   font-family: "Silkscreen", monospace;
   font-size: .58rem;
@@ -466,14 +466,14 @@ button.tag[aria-pressed="true"] { border-color: var(--edge-lit); color: var(--te
   text-transform: uppercase;
   opacity: .8;
 }
-.d-attr { margin: .5rem 0 .1rem; color: var(--legendary); font-size: .95rem; }
-.d-effect { margin: 0; color: var(--text-dim); font-size: .87rem; }
+.d-attr { margin: .6rem 0 .15rem; color: var(--legendary); font-size: 1.05rem; }
+.d-effect { margin: 0; color: var(--text-dim); font-size: .95rem; }
 
 .d-block { margin-top: 1.25rem; }
 .d-block h3 {
-  margin: 0 0 .5rem;
+  margin: 0 0 .6rem;
   font-family: "Silkscreen", monospace;
-  font-size: .6rem;
+  font-size: .68rem;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--text-dim);
@@ -481,20 +481,20 @@ button.tag[aria-pressed="true"] { border-color: var(--edge-lit); color: var(--te
 }
 .d-lore {
   font-family: "JetBrains Mono", monospace;
-  font-size: .78rem;
-  line-height: 1.7;
+  font-size: .87rem;
+  line-height: 1.75;
 }
 .d-lore p { margin: 0; }
 .d-lore .how { color: #9ad9a0; }
 .d-lore .rule { color: #b79cff; }
 .d-lore .fuse { color: var(--text-dim); }
 
-.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 .slot {
   background: #0f0a1b;
   border: 1px solid var(--edge);
   border-radius: var(--r);
-  padding: .8rem .85rem;
+  padding: 1rem 1.05rem;
   min-width: 0;
 }
 .slot-h {
@@ -505,22 +505,22 @@ button.tag[aria-pressed="true"] { border-color: var(--edge-lit); color: var(--te
 }
 .slot-h b {
   font-family: "Silkscreen", monospace;
-  font-size: .62rem;
+  font-size: .72rem;
   letter-spacing: .1em;
   color: var(--text-bright);
 }
 .slot-rule {
   font-family: "JetBrains Mono", monospace;
-  font-size: .72rem;
+  font-size: .82rem;
   color: #b79cff;
 }
-.slot-n { margin-left: auto; font-size: .72rem; color: var(--text-dim); }
+.slot-n { margin-left: auto; font-size: .8rem; color: var(--text-dim); }
 
 .slot-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: 15rem;
+  max-height: 21rem;
   overflow-y: auto;
   scrollbar-width: thin;
 }
@@ -531,34 +531,88 @@ button.tag[aria-pressed="true"] { border-color: var(--edge-lit); color: var(--te
   align-items: baseline;
   gap: .5rem;
   width: 100%;
-  padding: .3rem .15rem;
+  padding: .45rem .3rem;
   background: none;
   border: 0;
   font: inherit;
-  font-size: .84rem;
+  font-size: .95rem;
   text-align: left;
   cursor: pointer;
 }
 .pick:hover { background: #16102a; }
 .pick .nm { font-weight: 500; }
-.pick .st { margin-left: auto; font-size: .72rem; color: var(--text-dim); white-space: nowrap; }
+.pick .st { margin-left: auto; font-size: .8rem; color: var(--text-dim); white-space: nowrap; }
 .pick .st.have { color: var(--good); }
-.pick .only-fusion { font-size: .68rem; color: #7c6f99; }
+.pick .only-fusion { font-size: .76rem; color: #7c6f99; }
 
 .d-filter {
   display: inline-flex;
   align-items: center;
-  gap: .45rem;
-  margin: .1rem 0 .7rem;
-  font-size: .82rem;
+  gap: .5rem;
+  margin: .2rem 0 .8rem;
+  font-size: .9rem;
   color: var(--text-dim);
   cursor: pointer;
 }
 .d-filter input { accent-color: var(--legendary); }
 
-.d-none { color: var(--text-dim); font-size: .85rem; margin: 0; }
+.d-none { color: var(--text-dim); font-size: .9rem; margin: 0 0 .5rem; }
 
 @media (max-width: 720px) {
   .slots { grid-template-columns: 1fr; }
   .slot-list { max-height: 11rem; }
+}
+
+/* Kombiliste fuer Shards ohne allgemeine Regel */
+
+.combo-list {
+  list-style: none;
+  margin: .2rem 0 0;
+  padding: 0;
+  max-height: 26rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: .3rem .9rem;
+}
+.combo {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .3rem .45rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: #0f0a1b;
+  min-width: 0;
+}
+.combo.is-ready { border-color: #3d6b3f; }
+.combo .plus { color: var(--text-dim); font-size: .85rem; }
+.combo .qty {
+  margin-left: auto;
+  font-size: .76rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.ing {
+  background: none;
+  border: 0;
+  padding: .15rem .1rem;
+  font: inherit;
+  font-size: .95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ing:hover { text-decoration: underline; }
+.ing-box {
+  margin-left: .3rem;
+  font-size: .74rem;
+  color: var(--good);
+}
+
+@media (max-width: 720px) {
+  .combo-list { grid-template-columns: 1fr; max-height: 20rem; }
 }
