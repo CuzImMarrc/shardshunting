@@ -616,3 +616,29 @@ button.tag[aria-pressed="true"] { border-color: var(--edge-lit); color: var(--te
 @media (max-width: 720px) {
   .combo-list { grid-template-columns: 1fr; max-height: 20rem; }
 }
+
+/* "Jetzt fusebar" - Hinweis auf der Karte */
+
+.ready-now {
+  position: relative;
+  margin: .8rem 0 0;
+  padding: .45rem .55rem .45rem 1.35rem;
+  background: #102113;
+  border: 1px solid #3d6b3f;
+  border-radius: 2px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .76rem;
+  line-height: 1.5;
+  color: #9ad9a0;
+}
+.ready-dot {
+  position: absolute;
+  left: .6rem;
+  top: .95em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--good);
+}
+.ready-more { color: #6f9a74; }
+
+.tab[data-view="fusable"][aria-selected="true"] { border-color: #3d6b3f; }

@@ -206,6 +206,7 @@ function renderSummary(profile) {
 function renderTabs() {
   const t = state.totals;
   const defs = [
+    ["fusable", "Jetzt fusebar", state.recipes ? (t.fusable || 0) : "\u2026"],
     ["progress", "Angefangen", t.inProgress],
     ["missing", "Nie syphont", t.missing],
     ["maxed", "Fertig", t.maxed],
@@ -252,6 +253,13 @@ function cardHTML(row) {
     examples.slice(0, 2).forEach((e) => lore.push(`<p class="fuse">&bull; ${esc(e)}</p>`));
   }
 
+  const readyLine = (row.ready || []).length
+    ? `<p class="ready-now"><span class="ready-dot"></span>Jetzt fusebar: ${
+        esc(row.ready[0][0].info.name)} &times;${need(row.ready[0][0])} + ${
+        esc(row.ready[0][1].info.name)} &times;${need(row.ready[0][1])}${
+        row.ready.length > 1 ? ` <span class="ready-more">+${row.ready.length - 1} weitere</span>` : ""}</p>`
+    : "";
+
   const tags = [];
   if (row.box > 0) tags.push(`<span class="tag box">${row.box}x in der Box</span>`);
   if (!direct.length) tags.push('<span class="tag fusion-only">nur Fusion</span>');
@@ -269,6 +277,7 @@ function cardHTML(row) {
     <p class="attr">${esc(i.attribute || "")}</p>
     <p class="effect">${esc(i.effect || "")}</p>
     ${levelBlock}
+    ${readyLine}
     <div class="lore">${lore.join("")}</div>
     <div class="tags">${tags.join("")}</div>
   </article>`;
@@ -283,6 +292,7 @@ function visibleRows() {
   const sort = $("fSort").value;
 
   let rows = state.rows.filter((r) => {
+    if (state.view === "fusable" && !(r.ready || []).length) return false;
     if (state.view === "progress" && !(r.unlocked && r.remaining > 0)) return false;
     if (state.view === "missing" && r.unlocked) return false;
     if (state.view === "maxed" && !(r.unlocked && r.remaining === 0)) return false;
@@ -310,6 +320,9 @@ function visibleRows() {
   else if (sort === "rarity") rows.sort((a, b) =>
     RARITIES.indexOf(a.info.rarity) - RARITIES.indexOf(b.info.rarity) || byName(a, b));
   else if (sort === "remaining") rows.sort((a, b) => a.remaining - b.remaining || byName(a, b));
+  else if (state.view === "fusable") rows.sort((a, b) =>
+    a.unlocked - b.unlocked || a.level - b.level ||
+    RARITIES.indexOf(b.info.rarity) - RARITIES.indexOf(a.info.rarity) || byName(a, b));
   else if (state.view === "progress") rows.sort((a, b) => b.level - a.level || a.remaining - b.remaining);
   else if (state.view === "missing") rows.sort((a, b) =>
     (b.box > 0) - (a.box > 0) ||
@@ -329,6 +342,13 @@ function renderGrid() {
       .forEach((el) => el.setAttribute("aria-pressed", "true"));
   }
   $("empty").hidden = rows.length > 0;
+  if (!rows.length && state.view === "fusable") {
+    $("empty").textContent = state.recipes
+      ? "Mit dem aktuellen Box-Bestand laesst sich gerade nichts fusen."
+      : "Kombis werden geladen \u2026";
+  } else if (!rows.length) {
+    $("empty").textContent = "Nichts gefunden. Filter zuruecksetzen?";
+  }
   $("count").textContent = rows.length
     ? `${rows.length} ${rows.length === 1 ? "Shard" : "Shards"}`
     : "";
@@ -437,6 +457,53 @@ function comboList(id) {
     (RARITIES.indexOf(x.a.info.rarity) + RARITIES.indexOf(x.b.info.rarity)) -
     (RARITIES.indexOf(y.a.info.rarity) + RARITIES.indexOf(y.b.info.rarity)) ||
     x.a.info.name.localeCompare(y.a.info.name));
+}
+
+/* Was laesst sich mit dem aktuellen Box-Bestand sofort fusen?
+   Pro Zutat wird ihre eigene fuse_amount-Menge verbraucht (2 oder 5 Stueck). */
+function need(row) {
+  return Number(row.info.fuse_amount) || 1;
+}
+
+function haveEnough(row, times) {
+  return row.box >= need(row) * times;
+}
+
+function computeFusable() {
+  const box = state.rows.filter((r) => r.box > 0);
+  let count = 0;
+
+  for (const row of state.rows) {
+    const ready = [];
+    const [r1, r2] = row.info.fuse_inputs || ["", ""];
+
+    if (r1) {
+      for (const a of box) {
+        if (a.id === row.id || !matchesRule(r1, a.info)) continue;
+        for (const b of box) {
+          if (b.id === row.id || !matchesRule(r2 || r1, b.info)) continue;
+          const same = a.id === b.id;
+          if (!haveEnough(a, same ? 2 : 1) || (!same && !haveEnough(b, 1))) continue;
+          ready.push([a, b]);
+          if (ready.length >= 6) break;
+        }
+        if (ready.length >= 6) break;
+      }
+    } else {
+      for (const c of comboList(row.id)) {
+        const same = c.a.id === c.b.id;
+        if (!haveEnough(c.a, same ? 2 : 1) || (!same && !haveEnough(c.b, 1))) continue;
+        ready.push([c.a, c.b]);
+        if (ready.length >= 6) break;
+      }
+    }
+
+    row.ready = ready;
+    if (ready.length) count++;
+  }
+
+  state.totals.fusable = count;
+  return count;
 }
 
 function ingredientHTML(r) {
@@ -587,7 +654,15 @@ function showProfile(index) {
     return;
   }
   state.rows = buildRows(member);
+  computeFusable();
   renderAll(profile);
+
+  loadRecipes().then(() => {
+    if (!state.rows.length) return;
+    computeFusable();
+    renderTabs();
+    renderGrid();
+  });
 }
 
 async function lookup(ev) {

@@ -59,6 +59,13 @@ Die Regeln stehen maschinenlesbar in `shards.json` unter `fuse_inputs`, z.B.
 `Name Shard` = genau dieser Shard, `Mining Shards` = Attribut-Bereich Mining. Ausgewertet wird das
 in `app.js` in `matchesRule()`.
 
+## „Jetzt fusebar"
+
+Der erste Tab zeigt alle Shards, die sich mit dem aktuellen Inhalt der Hunting Box sofort fusen
+lassen. Pro Zutat wird deren `fuse_amount` verbraucht (2 oder 5 Stück, steht in `shards.json`);
+zweimal derselbe Shard braucht entsprechend die doppelte Menge. Der Tab lädt `recipes.json` im
+Hintergrund und zeigt so lange `…` als Zahl.
+
 ## Wie die Level berechnet werden
 
 Die API liefert unter `attributes.stacks` die Gesamtzahl syphonter Shards pro Attribut. Wie viele
