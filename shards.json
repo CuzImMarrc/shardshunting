@@ -18,6 +18,10 @@
   "fusion_rules": [
    "Fusing Forest Category and Common with Uncommon or higher."
   ],
+  "fuse_inputs": [
+   "Forest&Common",
+   "Uncommon+"
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Sparrow (Uncommon, Forest) = 2x",
    "Phanpyre (Common, Forest) + Field Mouse (Uncommon, Forest) = 2x",
@@ -43,6 +47,10 @@
   "fusion_rules": [
    "Fusing Water Category and Common with Uncommon or higher."
   ],
+  "fuse_inputs": [
+   "Water&Common",
+   "Uncommon+"
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Sparrow (Uncommon, Forest) = 2x",
    "Cod (Common, Water) + Field Mouse (Uncommon, Forest) = 2x",
@@ -67,6 +75,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Combat Category and Common with Uncommon or higher."
+  ],
+  "fuse_inputs": [
+   "Combat&Common",
+   "Uncommon+"
   ],
   "fusion_examples": [
    "Howling Spirit (Common, Combat) + Sparrow (Uncommon, Forest) = 2x",
@@ -95,6 +107,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Grove (Common, Forest) + Cod (Common, Water)",
    "Grove (Common, Forest) + Howling Spirit (Common, Combat)",
@@ -123,6 +139,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Chameleon (Legendary, Forest)",
    "Mist (Common, Water) + Phanpyre (Common, Forest)",
@@ -149,6 +169,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Chameleon (Legendary, Forest)",
    "Cod (Common, Water) + Chameleon (Legendary, Forest)",
@@ -176,6 +200,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Phanpyre (Common, Forest)",
    "Phanpyre (Common, Forest) + Cod (Common, Water)",
@@ -202,6 +230,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Cod (Common, Water)",
    "Cod (Common, Water) + Cod (Common, Water)",
@@ -228,6 +260,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Howling Spirit (Common, Combat)",
    "Cod (Common, Water) + Howling Spirit (Common, Combat)",
@@ -253,6 +289,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Phanflare (Common, Forest)",
    "Cod (Common, Water) + Phanflare (Common, Forest)",
@@ -281,6 +321,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Dumpster Diver (Common, Water)",
    "Cod (Common, Water) + Dumpster Diver (Common, Water)",
@@ -306,6 +350,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Lapis Zombie (Common, Combat)",
    "Cod (Common, Water) + Lapis Zombie (Common, Combat)",
@@ -333,6 +381,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Hideonleaf (Common, Forest)",
    "Cod (Common, Water) + Hideonleaf (Common, Forest)",
@@ -357,6 +409,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Verdant (Common, Water)",
    "Cod (Common, Water) + Verdant (Common, Water)",
@@ -383,6 +439,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Chill (Common, Combat)",
    "Cod (Common, Water) + Chill (Common, Combat)",
@@ -407,6 +467,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Shulker Family with Common or higher."
+  ],
+  "fuse_inputs": [
+   "Shulker",
+   "Common+"
   ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Hideonleaf (Common, Forest) = 2x",
@@ -433,6 +497,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Bogged (Common, Water)",
    "Cod (Common, Water) + Bogged (Common, Water)",
@@ -456,6 +524,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Voracious Spider (Common, Combat)",
    "Cod (Common, Water) + Voracious Spider (Common, Combat)",
@@ -482,6 +554,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Birries (Common, Water) + Chameleon (Legendary, Forest)",
    "Tank Zombie (Common, Combat) + Chameleon (Legendary, Forest)",
@@ -511,6 +587,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Birries (Common, Water)",
    "Cod (Common, Water) + Birries (Common, Water)",
@@ -535,6 +615,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Tank Zombie (Common, Combat)",
    "Cod (Common, Water) + Tank Zombie (Common, Combat)",
@@ -560,6 +644,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Crow (Common, Forest) + Chameleon (Legendary, Forest)",
    "Tadgang (Common, Water) + Chameleon (Legendary, Forest)",
@@ -588,6 +676,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Tadgang (Common, Water)",
    "Cod (Common, Water) + Tadgang (Common, Water)",
@@ -616,6 +708,10 @@
   "fusion_rules": [
    "Fusing Bird Family with Combat Category."
   ],
+  "fuse_inputs": [
+   "Bird",
+   "Combat"
+  ],
   "fusion_examples": [
    "Howling Spirit (Common, Combat) + Crow (Common, Forest) = 2x",
    "Howling Spirit (Common, Combat) + Blue Jay (Common, Forest) = 2x",
@@ -640,6 +736,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Fly (Common, Forest)",
    "Phanpyre (Common, Forest) + Crow (Common, Forest)",
@@ -666,6 +766,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Coralot (Common, Water)",
    "Cod (Common, Water) + Coralot (Common, Water)",
@@ -690,6 +794,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Zealot (Common, Combat)",
    "Phanpyre (Common, Forest) + Harpy (Common, Combat)",
@@ -717,6 +825,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Mudworm (Common, Forest)",
    "Cod (Common, Water) + Mudworm (Common, Forest)",
@@ -744,6 +856,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Lotusfish (Common, Water)",
    "Cod (Common, Water) + Lotusfish (Common, Water)",
@@ -769,6 +885,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Golden Ghoul (Common, Combat)",
    "Cod (Common, Water) + Golden Ghoul (Common, Combat)",
@@ -795,6 +915,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Locust (Common, Forest)",
    "Cod (Common, Water) + Locust (Common, Forest)",
@@ -821,6 +945,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Azure (Common, Water)",
    "Cod (Common, Water) + Azure (Common, Water)",
@@ -845,6 +973,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Bezal (Common, Combat)",
    "Cod (Common, Water) + Bezal (Common, Combat)",
@@ -869,6 +1001,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Bird Family with Common or higher."
+  ],
+  "fuse_inputs": [
+   "Bird",
+   "Common+"
   ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Crow (Common, Forest) = 2x",
@@ -896,6 +1032,10 @@
   "fusion_rules": [
    "Fusing Axolotl Family with Water Category."
   ],
+  "fuse_inputs": [
+   "Axolotl",
+   "Water"
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Coralot (Common, Water) = 2x",
    "Dumpster Diver (Common, Water) + Coralot (Common, Water) = 2x",
@@ -922,6 +1062,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Yog (Common, Combat)",
    "Cod (Common, Water) + Yog (Common, Combat)",
@@ -948,6 +1092,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Miner Zombie (Common, Combat) + Chameleon (Legendary, Forest)",
    "Boreal Owl (Common, Forest) + Chameleon (Legendary, Forest)",
@@ -973,6 +1121,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Miner Zombie (Common, Combat) + Chameleon (Legendary, Forest)",
    "Flitter (Common, Forest) + Chameleon (Legendary, Forest)",
@@ -997,6 +1149,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Miner Zombie (Common, Combat)",
    "Cod (Common, Water) + Miner Zombie (Common, Combat)",
@@ -1023,6 +1179,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Stag Beetle (Common, Forest)",
    "Phanpyre (Common, Forest) + Flitter (Common, Forest)",
@@ -1049,6 +1209,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Tepid (Common, Water) + Chameleon (Legendary, Forest)",
    "Cretan Bull (Common, Combat) + Chameleon (Legendary, Forest)",
@@ -1075,6 +1239,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cretan Bull (Common, Combat) + Chameleon (Legendary, Forest)",
    "Ant (Common, Forest) + Chameleon (Legendary, Forest)",
@@ -1100,6 +1268,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Ant (Common, Forest)",
    "Cod (Common, Water) + Ant (Common, Forest)",
@@ -1124,6 +1296,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Inkling (Common, Water)",
    "Phanpyre (Common, Forest) + Tepid (Common, Water)",
@@ -1148,6 +1324,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Cretan Bull (Common, Combat)",
    "Phanpyre (Common, Forest) + Strongarm (Common, Combat)",
@@ -1174,6 +1354,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Hideonsun (Common, Forest) + Chameleon (Legendary, Forest)",
    "Haggard (Common, Water) + Chameleon (Legendary, Forest)",
@@ -1198,6 +1382,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Haggard (Common, Water)",
    "Cod (Common, Water) + Haggard (Common, Water)",
@@ -1222,6 +1410,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Shyworm (Common, Forest) + Chameleon (Legendary, Forest)",
    "Brineling (Common, Water) + Chameleon (Legendary, Forest)"
@@ -1245,6 +1437,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Hideonsun (Common, Forest)",
    "Phanpyre (Common, Forest) + Shyworm (Common, Forest)",
@@ -1269,6 +1465,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Firefox (Common, Forest)",
    "Cod (Common, Water) + Firefox (Common, Forest)",
@@ -1295,6 +1495,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Brineling (Common, Water)",
    "Cod (Common, Water) + Brineling (Common, Water)",
@@ -1320,6 +1524,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Groundhog (Common, Forest)",
    "Cod (Common, Water) + Groundhog (Common, Forest)",
@@ -1344,6 +1552,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Blue Jay (Common, Forest)",
    "Cod (Common, Water) + Blue Jay (Common, Forest)",
@@ -1370,6 +1582,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Bunbun (Common, Forest)",
    "Cod (Common, Water) + Bunbun (Common, Forest)",
@@ -1396,6 +1612,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Honeybuzz (Common, Forest)",
    "Cod (Common, Water) + Honeybuzz (Common, Forest)",
@@ -1420,6 +1640,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Forest Category and Uncommon with Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Forest&Uncommon",
+   "Rare+"
   ],
   "fusion_examples": [
    "Sparrow (Uncommon, Forest) + Beaconmite (Rare, Forest) = 2x",
@@ -1446,6 +1670,10 @@
   "fusion_rules": [
    "Fusing Water Category and Uncommon with Rare or higher."
   ],
+  "fuse_inputs": [
+   "Water&Uncommon",
+   "Rare+"
+  ],
   "fusion_examples": [
    "Mossybit (Uncommon, Water) + Glacite Walker (Rare, Combat) = 2x",
    "Mossybit (Uncommon, Water) + Beaconmite (Rare, Forest) = 2x",
@@ -1470,6 +1698,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Combat Category and Uncommon with Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Combat&Uncommon",
+   "Rare+"
   ],
   "fusion_examples": [
    "Rain Slime (Uncommon, Combat) + Glacite Walker (Rare, Combat) = 2x",
@@ -1496,6 +1728,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Bramble (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Tide (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -1518,6 +1754,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Golden Ghoul Shard with Water Category."
+  ],
+  "fuse_inputs": [
+   "Golden Ghoul Shard",
+   "Water"
   ],
   "fusion_examples": [
    "Cod (Common, Water) + Golden Ghoul (Common, Combat) = 2x",
@@ -1544,6 +1784,10 @@
   "fusion_rules": [
    "Fusing Cave Dweller Family with Combat Category."
   ],
+  "fuse_inputs": [
+   "Cave Dweller",
+   "Combat"
+  ],
   "fusion_examples": [
    "Howling Spirit (Common, Combat) + Howling Spirit (Common, Combat) = 2x",
    "Howling Spirit (Common, Combat) + Lapis Zombie (Common, Combat) = 2x",
@@ -1568,6 +1812,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Shulker Family with Cave Dweller Family."
+  ],
+  "fuse_inputs": [
+   "Shulker",
+   "Cave Dweller"
   ],
   "fusion_examples": [
    "Howling Spirit (Common, Combat) + Hideonleaf (Common, Forest) = 2x",
@@ -1595,6 +1843,10 @@
   "fusion_rules": [
    "Fusing Newt Shard with Water Category."
   ],
+  "fuse_inputs": [
+   "Newt Shard",
+   "Water"
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Newt (Common, Water) = 2x",
    "Dumpster Diver (Common, Water) + Newt (Common, Water) = 2x",
@@ -1620,6 +1872,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Shulker Family with Reptile Family."
+  ],
+  "fuse_inputs": [
+   "Shulker",
+   "Reptile"
   ],
   "fusion_examples": [
    "Hideonleaf (Common, Forest) + Viper (Uncommon, Combat) = 2x",
@@ -1648,6 +1904,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Sparrow (Uncommon, Forest)",
    "Cod (Common, Water) + Sparrow (Uncommon, Forest)",
@@ -1677,6 +1937,10 @@
   "fusion_rules": [
    "Fusing Tadgang Shard with Forest Category."
   ],
+  "fuse_inputs": [
+   "Tadgang Shard",
+   "Forest"
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Tadgang (Common, Water) = 2x",
    "Phanflare (Common, Forest) + Tadgang (Common, Water) = 2x",
@@ -1701,6 +1965,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Field Mouse (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Mossybit (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -1729,6 +1997,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Mossybit (Uncommon, Water)",
    "Cod (Common, Water) + Mossybit (Uncommon, Water)",
@@ -1753,6 +2025,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Rain Slime (Uncommon, Combat)",
    "Cod (Common, Water) + Rain Slime (Uncommon, Combat)",
@@ -1778,6 +2054,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Wetwing (Uncommon, Water) + Chameleon (Legendary, Forest)",
    "Seer (Uncommon, Combat) + Chameleon (Legendary, Forest)"
@@ -1800,6 +2080,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Wetwing (Uncommon, Water)",
    "Cod (Common, Water) + Wetwing (Uncommon, Water)",
@@ -1824,6 +2108,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Seer (Uncommon, Combat)",
    "Cod (Common, Water) + Seer (Uncommon, Combat)",
@@ -1851,6 +2139,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Field Mouse (Uncommon, Forest)",
    "Phanpyre (Common, Forest) + Heron (Uncommon, Forest)",
@@ -1877,6 +2169,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Sea Witch (Uncommon, Water)",
    "Cod (Common, Water) + Sea Witch (Uncommon, Water)",
@@ -1905,6 +2201,10 @@
   "fusion_rules": [
    "Fusing Cuboa Shard with Combat Category."
   ],
+  "fuse_inputs": [
+   "Cuboa Shard",
+   "Combat"
+  ],
   "fusion_examples": [
    "Obsidian Defender (Uncommon, Combat) + Chameleon (Legendary, Forest)",
    "Cricket (Uncommon, Forest) + Chameleon (Legendary, Forest)",
@@ -1931,6 +2231,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Cricket (Uncommon, Forest)",
    "Cod (Common, Water) + Cricket (Uncommon, Forest)",
@@ -1958,6 +2262,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Salmon (Uncommon, Water)",
    "Cod (Common, Water) + Salmon (Uncommon, Water)",
@@ -1981,6 +2289,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Obsidian Defender (Uncommon, Combat)",
    "Phanpyre (Common, Forest) + Viper (Uncommon, Combat)",
@@ -2007,6 +2319,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Praying Mantis (Uncommon, Forest)",
    "Cod (Common, Water) + Praying Mantis (Uncommon, Forest)",
@@ -2034,6 +2350,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Lotum (Uncommon, Water)",
    "Cod (Common, Water) + Lotum (Uncommon, Water)",
@@ -2058,6 +2378,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Zombie Soldier (Uncommon, Combat)",
    "Cod (Common, Water) + Zombie Soldier (Uncommon, Combat)",
@@ -2084,6 +2408,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Bambuleaf (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Treasure Hoarder (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -2110,6 +2438,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Treasure Hoarder (Uncommon, Water)",
    "Cod (Common, Water) + Treasure Hoarder (Uncommon, Water)",
@@ -2135,6 +2467,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Sycophant (Uncommon, Combat)",
    "Cod (Common, Water) + Sycophant (Uncommon, Combat)",
@@ -2161,6 +2497,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Bambuleaf (Uncommon, Forest)",
    "Phanpyre (Common, Forest) + Seagull (Uncommon, Forest)",
@@ -2187,6 +2527,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Ent (Uncommon, Water)",
    "Cod (Common, Water) + Ent (Uncommon, Water)",
@@ -2213,6 +2557,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Soul of the Alpha (Uncommon, Combat)",
    "Cod (Common, Water) + Soul of the Alpha (Uncommon, Combat)",
@@ -2238,6 +2586,10 @@
   "fusion_rules": [
    "Fusing Bird Family with Uncommon or higher."
   ],
+  "fuse_inputs": [
+   "Bird",
+   "Uncommon+"
+  ],
   "fusion_examples": [
    "Crow (Common, Forest) + Sparrow (Uncommon, Forest) = 2x",
    "Crow (Common, Forest) + Field Mouse (Uncommon, Forest) = 2x",
@@ -2262,6 +2614,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Flaming Spider (Uncommon, Combat)",
    "Cod (Common, Water) + Flaming Spider (Uncommon, Combat)",
@@ -2289,6 +2645,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Magma Slug (Uncommon, Water)",
    "Cod (Common, Water) + Magma Slug (Uncommon, Water)",
@@ -2314,6 +2674,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Frog Family with Combat Category."
+  ],
+  "fuse_inputs": [
+   "Frog",
+   "Combat"
   ],
   "fusion_examples": [
    "Howling Spirit (Common, Combat) + Tadgang (Common, Water) = 2x",
@@ -2344,6 +2708,10 @@
   "fusion_rules": [
    "Fusing Bug Family with Mining Attribute Category."
   ],
+  "fuse_inputs": [
+   "Bug",
+   "Mining Shards"
+  ],
   "fusion_examples": [
    "Hideonleaf (Common, Forest) + Fly (Common, Forest) = 2x",
    "Hideonleaf (Common, Forest) + Locust (Common, Forest) = 2x",
@@ -2367,6 +2735,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Stridersurfer (Uncommon, Water)",
    "Cod (Common, Water) + Stridersurfer (Uncommon, Water)",
@@ -2393,6 +2765,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Earthworm (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Flipflopper (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -2420,6 +2796,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Earthworm (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Flipflopper (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -2446,6 +2826,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Flipflopper (Uncommon, Water)",
    "Cod (Common, Water) + Flipflopper (Uncommon, Water)",
@@ -2471,6 +2855,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Polaris (Uncommon, Combat) + Chameleon (Legendary, Forest)",
    "Treefrog (Uncommon, Forest) + Chameleon (Legendary, Forest)",
@@ -2496,6 +2884,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Treefrog (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Bayou Sludge (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -2521,6 +2913,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Bayou Sludge (Uncommon, Water) + Chameleon (Legendary, Forest)",
    "Areita (Uncommon, Combat) + Chameleon (Legendary, Forest)",
@@ -2546,6 +2942,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Areita (Uncommon, Combat) + Chameleon (Legendary, Forest)",
    "Bluebird (Uncommon, Forest) + Chameleon (Legendary, Forest)",
@@ -2573,6 +2973,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Bluebird (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Osedax (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -2602,6 +3006,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Bayou Sludge (Uncommon, Water)",
    "Phanpyre (Common, Forest) + Osedax (Uncommon, Water)",
@@ -2627,6 +3035,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Duplico (Uncommon, Combat) + Chameleon (Legendary, Forest)",
    "Litterbug (Uncommon, Forest) + Chameleon (Legendary, Forest)",
@@ -2653,6 +3065,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Litterbug (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Water Snake (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -2678,6 +3094,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Water Snake (Uncommon, Water) + Chameleon (Legendary, Forest)",
    "Gazer (Uncommon, Combat) + Chameleon (Legendary, Forest)",
@@ -2704,6 +3124,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Honeybug (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Shuddersquid (Uncommon, Water) + Chameleon (Legendary, Forest)"
@@ -2733,6 +3157,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Water Snake (Uncommon, Water)",
    "Phanpyre (Common, Forest) + Shuddersquid (Uncommon, Water)",
@@ -2756,6 +3184,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Solsnatcher (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Sepialot (Uncommon, Water) + Chameleon (Legendary, Forest)"
@@ -2780,6 +3212,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Solsnatcher (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Sepialot (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -2808,6 +3244,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Sepialot (Uncommon, Water)",
    "Cod (Common, Water) + Sepialot (Uncommon, Water)",
@@ -2832,6 +3272,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Zealot Bruiser (Uncommon, Combat)",
    "Phanpyre (Common, Forest) + Polaris (Uncommon, Combat)",
@@ -2855,6 +3299,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Driftling (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Tewtil (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -2881,6 +3329,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Tewtil (Uncommon, Water)",
    "Cod (Common, Water) + Tewtil (Uncommon, Water)",
@@ -2906,6 +3358,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Minos Hunter (Uncommon, Combat)",
    "Cod (Common, Water) + Minos Hunter (Uncommon, Combat)",
@@ -2929,6 +3385,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Woodchucker (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Solar (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -2958,6 +3418,10 @@
   "fusion_rules": [
    "Fusing Tadgang Shard with Combat Category."
   ],
+  "fuse_inputs": [
+   "Tadgang Shard",
+   "Combat"
+  ],
   "fusion_examples": [
    "Howling Spirit (Common, Combat) + Tadgang (Common, Water) = 2x",
    "Lapis Zombie (Common, Combat) + Tadgang (Common, Water) = 2x",
@@ -2986,6 +3450,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Mochibear (Uncommon, Forest)",
    "Phanpyre (Common, Forest) + Earthworm (Uncommon, Forest)",
@@ -3013,6 +3481,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Dustybit (Uncommon, Water)",
    "Cod (Common, Water) + Dustybit (Uncommon, Water)",
@@ -3038,6 +3510,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Parched (Uncommon, Combat)",
    "Cod (Common, Water) + Parched (Uncommon, Combat)",
@@ -3064,6 +3540,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Woodlouse (Uncommon, Forest) + Chameleon (Legendary, Forest)",
    "Ember (Uncommon, Water) + Chameleon (Legendary, Forest)",
@@ -3089,6 +3569,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Ember (Uncommon, Water)",
    "Cod (Common, Water) + Ember (Uncommon, Water)",
@@ -3114,6 +3598,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Cheeky Tiki (Uncommon, Combat)",
    "Cod (Common, Water) + Cheeky Tiki (Uncommon, Combat)",
@@ -3139,6 +3627,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Sneaky Tiki (Uncommon, Combat)",
    "Cod (Common, Water) + Sneaky Tiki (Uncommon, Combat)",
@@ -3164,6 +3656,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Shrieky Tiki (Uncommon, Combat) + Chameleon (Legendary, Forest)"
   ]
@@ -3187,6 +3683,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Shrieky Tiki (Uncommon, Combat)",
    "Cod (Common, Water) + Shrieky Tiki (Uncommon, Combat)",
@@ -3216,6 +3716,10 @@
   "fusion_rules": [
    "Fusing Ant Shard with Elusive Family."
   ],
+  "fuse_inputs": [
+   "Ant Shard",
+   "Elusive"
+  ],
   "fusion_examples": [
    "Ant (Common, Forest) + Field Mouse (Uncommon, Forest) = 2x",
    "Ant (Common, Forest) + Osedax (Uncommon, Water) = 2x",
@@ -3241,6 +3745,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Queen Ant (Uncommon, Forest) + Chameleon (Legendary, Forest)"
   ]
@@ -3264,6 +3772,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Hawk (Uncommon, Forest) + Chameleon (Legendary, Forest)"
   ]
@@ -3290,6 +3802,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "June Bug (Uncommon, Forest) + Chameleon (Legendary, Forest)"
   ]
@@ -3314,6 +3830,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Woodlouse (Uncommon, Forest)",
    "Phanpyre (Common, Forest) + Red Panda (Uncommon, Forest)",
@@ -3340,6 +3860,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Rat (Uncommon, Forest)",
    "Cod (Common, Water) + Rat (Uncommon, Forest)",
@@ -3366,6 +3890,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Keeled Slug (Uncommon, Forest)",
    "Cod (Common, Water) + Keeled Slug (Uncommon, Forest)",
@@ -3393,6 +3921,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Mite (Uncommon, Forest)",
    "Cod (Common, Water) + Mite (Uncommon, Forest)",
@@ -3420,6 +3952,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Moth (Uncommon, Forest)",
    "Cod (Common, Water) + Moth (Uncommon, Forest)",
@@ -3445,6 +3981,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Mosquito (Uncommon, Forest) + Chameleon (Legendary, Forest)"
   ]
@@ -3467,6 +4007,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Forest Category and Rare with Epic or higher."
+  ],
+  "fuse_inputs": [
+   "Forest&Rare",
+   "Epic+"
   ],
   "fusion_examples": [
    "Beaconmite (Rare, Forest) + Alligator (Epic, Combat) = 2x",
@@ -3493,6 +4037,10 @@
   "fusion_rules": [
    "Fusing Water Category and Rare with Epic or higher."
   ],
+  "fuse_inputs": [
+   "Water&Rare",
+   "Epic+"
+  ],
   "fusion_examples": [
    "Piranha (Rare, Water) + Alligator (Epic, Combat) = 2x",
    "Piranha (Rare, Water) + Abyssal Miner (Epic, Water) = 2x",
@@ -3518,6 +4066,10 @@
   "fusion_rules": [
    "Fusing Combat Category and Rare with Epic or higher."
   ],
+  "fuse_inputs": [
+   "Combat&Rare",
+   "Epic+"
+  ],
   "fusion_examples": [
    "Glacite Walker (Rare, Combat) + Alligator (Epic, Combat) = 2x",
    "Glacite Walker (Rare, Combat) + Abyssal Miner (Epic, Water) = 2x",
@@ -3542,6 +4094,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Panda Family with Uncommon or higher."
+  ],
+  "fuse_inputs": [
+   "Panda",
+   "Uncommon+"
   ],
   "fusion_examples": [
    "Sparrow (Uncommon, Forest) + Bambuleaf (Uncommon, Forest) = 2x",
@@ -3569,6 +4125,10 @@
   "fusion_rules": [
    "Fusing Frog Family with Forest Category and Uncommon or higher."
   ],
+  "fuse_inputs": [
+   "Frog",
+   "Forest&Uncommon+"
+  ],
   "fusion_examples": [
    "Tadgang (Common, Water) + Field Mouse (Uncommon, Forest) = 2x",
    "Tadgang (Common, Water) + Cricket (Uncommon, Forest) = 2x",
@@ -3593,6 +4153,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Bolt (Rare, Combat)",
    "Cod (Common, Water) + Bolt (Rare, Combat)",
@@ -3618,6 +4182,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Glacite Walker (Rare, Combat) + Chameleon (Legendary, Forest)",
    "Phanpyre (Common, Forest) + Sylvan (Rare, Forest)",
@@ -3643,6 +4211,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Lizard Family with Water Category and Uncommon or higher."
+  ],
+  "fuse_inputs": [
+   "Lizard",
+   "Water&Uncommon+"
   ],
   "fusion_examples": [
    "Mossybit (Uncommon, Water) + Chuckwalla (Rare, Combat) = 2x",
@@ -3670,6 +4242,10 @@
   "fusion_rules": [
    "Fusing Viper Shard with Combat Category and Uncommon or higher."
   ],
+  "fuse_inputs": [
+   "Viper Shard",
+   "Combat&Uncommon+"
+  ],
   "fusion_examples": [
    "Rain Slime (Uncommon, Combat) + Viper (Uncommon, Combat) = 2x",
    "Seer (Uncommon, Combat) + Viper (Uncommon, Combat) = 2x",
@@ -3696,6 +4272,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Beaconmite (Rare, Forest)",
    "Cod (Common, Water) + Beaconmite (Rare, Forest)",
@@ -3723,6 +4303,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Invisibug (Rare, Forest) + Chameleon (Legendary, Forest)",
    "Phanpyre (Common, Forest) + Cascade (Rare, Water)",
@@ -3748,6 +4332,10 @@
   "fusion_rules": [
    "Fusing Shulker Family with Wither Shard."
   ],
+  "fuse_inputs": [
+   "Shulker",
+   "Wither Shard"
+  ],
   "fusion_examples": [
    "Hideonleaf (Common, Forest) + Wither (Rare, Combat) = 2x",
    "Hideonsun (Common, Forest) + Wither (Rare, Combat) = 2x",
@@ -3772,6 +4360,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Lapis Zombie Shard with Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Lapis Zombie Shard",
+   "Rare+"
   ],
   "fusion_examples": [
    "Lapis Zombie (Common, Combat) + Glacite Walker (Rare, Combat) = 2x",
@@ -3800,6 +4392,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Invisibug (Rare, Forest)",
    "Cod (Common, Water) + Invisibug (Rare, Forest)",
@@ -3827,6 +4423,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Glacite Walker (Rare, Combat)",
    "Cod (Common, Water) + Glacite Walker (Rare, Combat)",
@@ -3852,6 +4452,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Beetle (Rare, Forest) + Chameleon (Legendary, Forest)",
    "Drowned (Rare, Combat) + Chameleon (Legendary, Forest)"
@@ -3875,6 +4479,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Drowned (Rare, Combat)",
    "Cod (Common, Water) + Drowned (Rare, Combat)",
@@ -3899,6 +4507,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Shulker Family with Demon Family."
+  ],
+  "fuse_inputs": [
+   "Shulker",
+   "Demon"
   ],
   "fusion_examples": [
    "Hideonleaf (Common, Forest) + Gazer (Uncommon, Combat) = 2x",
@@ -3926,6 +4538,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Piranha (Rare, Water)",
    "Cod (Common, Water) + Piranha (Rare, Water)",
@@ -3952,6 +4568,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Star Sentry (Rare, Combat)",
    "Cod (Common, Water) + Star Sentry (Rare, Combat)",
@@ -3977,6 +4597,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": []
  },
  "SHARD_LAVA_LEECH": {
@@ -3996,6 +4620,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Abyssal Lanternfish (Rare, Water)",
    "Cod (Common, Water) + Abyssal Lanternfish (Rare, Water)",
@@ -4019,6 +4647,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Arachne (Rare, Combat)",
    "Cod (Common, Water) + Arachne (Rare, Combat)",
@@ -4045,6 +4677,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Lava Leech (Rare, Water)",
    "Cod (Common, Water) + Lava Leech (Rare, Water)",
@@ -4069,6 +4705,10 @@
   "obtainable_directly": true,
   "fusion_rules": [
    "Fusing Lapis Skeleton Shard with Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Lapis Skeleton Shard",
+   "Rare+"
   ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Revenant (Rare, Combat)",
@@ -4097,6 +4737,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Beetle (Rare, Forest)",
    "Phanpyre (Common, Forest) + Bitbug (Rare, Forest)",
@@ -4122,6 +4766,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Silentdepth (Rare, Water)",
    "Cod (Common, Water) + Silentdepth (Rare, Water)",
@@ -4146,6 +4794,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Troglobyte Shard with Cave Dweller Family or Abyssal Lanternfish Shard."
+  ],
+  "fuse_inputs": [
+   "Troglobyte Shard",
+   "Cave Dweller|Abyssal Lanternfish Shard"
   ],
   "fusion_examples": [
    "Skeletor (Rare, Combat) + Chameleon (Legendary, Forest)",
@@ -4172,6 +4824,10 @@
   "fusion_rules": [
    "Fusing Shulker Family and Rare or higher with Rare or higher."
   ],
+  "fuse_inputs": [
+   "Shulker&Rare+",
+   "Rare+"
+  ],
   "fusion_examples": [
    "Glacite Walker (Rare, Combat) + Hideonfloor (Rare, Forest) = 2x",
    "Glacite Walker (Rare, Combat) + Hideonwall (Rare, Forest) = 2x",
@@ -4197,6 +4853,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Seashine (Rare, Water)",
    "Cod (Common, Water) + Seashine (Rare, Water)",
@@ -4222,6 +4882,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Skeletor (Rare, Combat)",
    "Cod (Common, Water) + Skeletor (Rare, Combat)",
@@ -4247,6 +4911,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Snowfin (Rare, Water) + Chameleon (Legendary, Forest)",
    "Kada Knight (Rare, Combat) + Chameleon (Legendary, Forest)",
@@ -4271,6 +4939,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Snowfin (Rare, Water)",
    "Cod (Common, Water) + Snowfin (Rare, Water)",
@@ -4296,6 +4968,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Kada Knight (Rare, Combat)",
    "Cod (Common, Water) + Kada Knight (Rare, Combat)",
@@ -4319,6 +4995,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Hummingbird (Rare, Forest) + Chameleon (Legendary, Forest)",
    "Carrot King (Rare, Water) + Chameleon (Legendary, Forest)",
@@ -4344,6 +5024,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Wither Spectre (Rare, Combat)",
    "Cod (Common, Water) + Wither Spectre (Rare, Combat)",
@@ -4368,6 +5052,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Earthworm Shard with Invisibug Shard."
+  ],
+  "fuse_inputs": [
+   "Earthworm Shard",
+   "Invisibug Shard"
   ],
   "fusion_examples": [
    "Earthworm (Uncommon, Forest) + Invisibug (Rare, Forest) = 2x",
@@ -4395,6 +5083,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Carrot King (Rare, Water)",
    "Cod (Common, Water) + Carrot King (Rare, Water)",
@@ -4421,6 +5113,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Matcho (Rare, Combat)",
    "Cod (Common, Water) + Matcho (Rare, Combat)",
@@ -4443,6 +5139,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Groundhog Shard with Honeyhog Shard."
+  ],
+  "fuse_inputs": [
+   "Groundhog Shard",
+   "Honeyhog Shard"
   ],
   "fusion_examples": [
    "Honeyhog (Common, Combat) + Groundhog (Common, Forest) = 2x",
@@ -4469,6 +5169,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Frog Family with Forest Category and Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Frog",
+   "Forest&Rare+"
   ],
   "fusion_examples": [
    "Tadgang (Common, Water) + Beaconmite (Rare, Forest) = 2x",
@@ -4501,6 +5205,10 @@
   "fusion_rules": [
    "Fusing Phanpyre and Phanflare Shards with Rare or higher."
   ],
+  "fuse_inputs": [
+   "Phanpyre Shard|Phanflare Shard",
+   "Rare+"
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Glacite Walker (Rare, Combat) = 2x",
    "Phanpyre (Common, Forest) + Beaconmite (Rare, Forest) = 2x",
@@ -4525,6 +5233,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Lumisquid (Rare, Water)",
    "Cod (Common, Water) + Lumisquid (Rare, Water)",
@@ -4550,6 +5262,10 @@
   "fusion_rules": [
    "Fusing Quartzfang Shard with Cave Dweller Family or Silentdepth Shard."
   ],
+  "fuse_inputs": [
+   "Quartzfang Shard",
+   "Cave Dweller|Silentdepth Shard"
+  ],
   "fusion_examples": [
    "Dreadwing (Rare, Forest) + Chameleon (Legendary, Forest)",
    "Joydive (Rare, Water) + Chameleon (Legendary, Forest)",
@@ -4574,6 +5290,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Cave Dweller Family with Forest Category and Epic or higher."
+  ],
+  "fuse_inputs": [
+   "Cave Dweller",
+   "Forest&Epic+"
   ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Dreadwing (Rare, Forest)",
@@ -4602,6 +5322,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Joydive (Rare, Water)",
    "Cod (Common, Water) + Joydive (Rare, Water)",
@@ -4628,6 +5352,10 @@
   "fusion_rules": [
    "Fusing Python Shard with Combat Category and Uncommon or higher."
   ],
+  "fuse_inputs": [
+   "Python Shard",
+   "Combat&Uncommon+"
+  ],
   "fusion_examples": [
    "Eel (Rare, Water) + Chameleon (Legendary, Forest)",
    "Rain Slime (Uncommon, Combat) + Python (Rare, Combat) = 2x",
@@ -4652,6 +5380,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Eel (Rare, Water) + Chameleon (Legendary, Forest)",
    "Phanpyre (Common, Forest) + Fungloom (Rare, Forest)",
@@ -4678,6 +5410,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Eel (Rare, Water)",
    "Cod (Common, Water) + Eel (Rare, Water)",
@@ -4703,6 +5439,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Crocodile (Rare, Combat)",
    "Cod (Common, Water) + Crocodile (Rare, Combat)",
@@ -4727,6 +5467,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Bird Family with Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Bird",
+   "Rare+"
   ],
   "fusion_examples": [
    "Beaconmite (Rare, Forest) + Vulture (Rare, Forest) = 2x",
@@ -4754,6 +5498,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Lava Flame (Rare, Water)",
    "Cod (Common, Water) + Lava Flame (Rare, Water)",
@@ -4777,6 +5525,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Draconic (Rare, Combat)",
    "Cod (Common, Water) + Draconic (Rare, Combat)",
@@ -4803,6 +5555,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Inferno Koi (Rare, Water) + Chameleon (Legendary, Forest)",
    "Wither (Rare, Combat) + Chameleon (Legendary, Forest)",
@@ -4831,6 +5587,10 @@
   "fusion_rules": [
    "Fusing Creation Family and Epic or higher with Shrieky Tiki, Sneaky Tiki, and Cheeky Tiki Shards."
   ],
+  "fuse_inputs": [
+   "Creation&Epic+",
+   "Shrieky Tiki Shard|Sneaky Tiki Shard|Cheeky Tiki Shard"
+  ],
   "fusion_examples": [
    "Cheeky Tiki (Uncommon, Combat) + Lord Jawbus (Legendary, Water) = 2x",
    "Sneaky Tiki (Uncommon, Combat) + Lord Jawbus (Legendary, Water) = 2x",
@@ -4855,6 +5615,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Wither (Rare, Combat)",
    "Cod (Common, Water) + Wither (Rare, Combat)",
@@ -4879,6 +5643,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Hewver (Rare, Forest)",
    "Phanpyre (Common, Forest) + Gecko (Rare, Forest)",
@@ -4905,6 +5673,10 @@
   "fusion_rules": [
    "Fusing Trash Lover Family with Bug Family and Uncommon or higher."
   ],
+  "fuse_inputs": [
+   "Trash Lover",
+   "Bug&Uncommon+"
+  ],
   "fusion_examples": [
    "Dumpster Diver (Common, Water) + Cricket (Uncommon, Forest) = 2x",
    "Dumpster Diver (Common, Water) + Praying Mantis (Uncommon, Forest) = 2x",
@@ -4928,6 +5700,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Minotaur (Rare, Combat) + Chameleon (Legendary, Forest)",
    "Hivethief (Rare, Forest) + Chameleon (Legendary, Forest)",
@@ -4953,6 +5729,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Hivethief (Rare, Forest) + Chameleon (Legendary, Forest)",
    "Snoozle (Rare, Combat) + Chameleon (Legendary, Forest)",
@@ -4978,6 +5758,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Inferno Koi (Rare, Water)",
    "Phanpyre (Common, Forest) + Wiki Tiki (Rare, Water)",
@@ -5004,6 +5788,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Snoozle (Rare, Combat) + Chameleon (Legendary, Forest)",
    "Parakeet (Rare, Forest) + Chameleon (Legendary, Forest)",
@@ -5026,6 +5814,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Queen Ant Shard with King Cobra Shard."
+  ],
+  "fuse_inputs": [
+   "Queen Ant Shard",
+   "King Cobra Shard"
   ],
   "fusion_examples": [
    "Parakeet (Rare, Forest) + Chameleon (Legendary, Forest)",
@@ -5052,6 +5844,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Rockmite (Rare, Combat) + Chameleon (Legendary, Forest)",
    "Anteater (Rare, Forest) + Chameleon (Legendary, Forest)"
@@ -5076,6 +5872,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Scrappy (Rare, Combat) + Chameleon (Legendary, Forest)",
    "Anteater (Rare, Forest) + Chameleon (Legendary, Forest)"
@@ -5100,6 +5900,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Scrappy (Rare, Combat) + Chameleon (Legendary, Forest)",
    "Hideyho (Rare, Forest) + Chameleon (Legendary, Forest)"
@@ -5125,6 +5929,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Scrappy (Rare, Combat) + Chameleon (Legendary, Forest)",
    "Hideyho (Rare, Forest) + Chameleon (Legendary, Forest)",
@@ -5150,6 +5958,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Hideyho (Rare, Forest) + Chameleon (Legendary, Forest)",
    "Mantis Shrimp (Rare, Water) + Chameleon (Legendary, Forest)",
@@ -5175,6 +5987,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Mantis Shrimp (Rare, Water) + Chameleon (Legendary, Forest)",
    "Chuckwalla (Rare, Combat) + Chameleon (Legendary, Forest)",
@@ -5200,6 +6016,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Chuckwalla (Rare, Combat) + Chameleon (Legendary, Forest)",
    "Hideonfloor (Rare, Forest) + Chameleon (Legendary, Forest)",
@@ -5225,6 +6045,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Hideonfloor (Rare, Forest) + Chameleon (Legendary, Forest)",
    "Gimmiegold (Rare, Water) + Chameleon (Legendary, Forest)",
@@ -5248,6 +6072,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Gimmiegold (Rare, Water) + Chameleon (Legendary, Forest)",
    "Billygoat (Rare, Combat) + Chameleon (Legendary, Forest)",
@@ -5273,6 +6101,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Minotaur (Rare, Combat)",
    "Phanpyre (Common, Forest) + Snoozle (Rare, Combat)",
@@ -5298,6 +6130,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Hideonwall (Rare, Forest) + Chameleon (Legendary, Forest)",
    "Nozzlenose (Rare, Water) + Chameleon (Legendary, Forest)",
@@ -5325,6 +6161,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Thunder (Rare, Water)",
    "Phanpyre (Common, Forest) + Mantis Shrimp (Rare, Water)",
@@ -5349,6 +6189,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Stoneworm (Rare, Combat)",
    "Cod (Common, Water) + Stoneworm (Rare, Combat)",
@@ -5375,6 +6219,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Hivethief (Rare, Forest)",
    "Phanpyre (Common, Forest) + Hideyho (Rare, Forest)",
@@ -5400,6 +6248,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Stingray (Rare, Water) + Chameleon (Legendary, Forest)",
    "Zombuddy (Rare, Combat) + Chameleon (Legendary, Forest)",
@@ -5426,6 +6278,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Zombuddy (Rare, Combat) + Chameleon (Legendary, Forest)",
    "Puck (Rare, Forest) + Chameleon (Legendary, Forest)",
@@ -5449,6 +6305,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Puck (Rare, Forest)",
    "Cod (Common, Water) + Puck (Rare, Forest)",
@@ -5475,6 +6335,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Stingray (Rare, Water)",
    "Phanpyre (Common, Forest) + Troodon (Rare, Water)",
@@ -5499,6 +6363,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Pangolin (Rare, Forest)",
    "Cod (Common, Water) + Pangolin (Rare, Forest)",
@@ -5528,6 +6396,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Giant Water Bug (Rare, Water)",
    "Cod (Common, Water) + Giant Water Bug (Rare, Water)",
@@ -5553,6 +6425,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Murkbat (Rare, Forest) + Chameleon (Legendary, Forest)",
    "Goldolot (Rare, Water) + Chameleon (Legendary, Forest)"
@@ -5579,6 +6455,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Goldolot (Rare, Water)",
    "Cod (Common, Water) + Goldolot (Rare, Water)",
@@ -5603,6 +6483,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Murkbat (Rare, Forest)",
    "Phanpyre (Common, Forest) + Rabbit Neighbor (Rare, Forest)",
@@ -5627,6 +6511,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Forest Category and Epic with Legendary or higher."
+  ],
+  "fuse_inputs": [
+   "Forest&Epic",
+   "Legendary+"
   ],
   "fusion_examples": [
    "Invisibug (Rare, Forest) + Chameleon (Legendary, Forest)",
@@ -5653,6 +6541,10 @@
   "fusion_rules": [
    "Fusing Water Category and Epic with Legendary or higher."
   ],
+  "fuse_inputs": [
+   "Water&Epic",
+   "Legendary+"
+  ],
   "fusion_examples": [
    "Piranha (Rare, Water) + Chameleon (Legendary, Forest)",
    "Torrid (Rare, Water) + Chameleon (Legendary, Forest)",
@@ -5677,6 +6569,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Combat Category and Epic with Legendary or higher."
+  ],
+  "fuse_inputs": [
+   "Combat&Epic",
+   "Legendary+"
   ],
   "fusion_examples": [
    "Drybark (Rare, Forest) + Chameleon (Legendary, Forest)",
@@ -5703,6 +6599,10 @@
   "fusion_rules": [
    "Fusing Panda Family with Rare or higher."
   ],
+  "fuse_inputs": [
+   "Panda",
+   "Rare+"
+  ],
   "fusion_examples": [
    "Bambuleaf (Uncommon, Forest) + Glacite Walker (Rare, Combat) = 2x",
    "Bambuleaf (Uncommon, Forest) + Beaconmite (Rare, Forest) = 2x",
@@ -5728,6 +6628,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Lizard Family with Water Category and Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Lizard",
+   "Water&Rare+"
   ],
   "fusion_examples": [
    "Piranha (Rare, Water) + Chuckwalla (Rare, Combat) = 2x",
@@ -5758,6 +6662,10 @@
   "fusion_rules": [
    "Fusing Crocodile Shard with Combat Category and Rare or higher."
   ],
+  "fuse_inputs": [
+   "Crocodile Shard",
+   "Combat&Rare+"
+  ],
   "fusion_examples": [
    "Glacite Walker (Rare, Combat) + Crocodile (Rare, Combat) = 2x",
    "Drowned (Rare, Combat) + Crocodile (Rare, Combat) = 2x",
@@ -5783,6 +6691,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Bullfrog Shard with Forest Category and Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Bullfrog Shard",
+   "Forest&Rare+"
   ],
   "fusion_examples": [
    "Alligator (Epic, Combat) + Chameleon (Legendary, Forest)",
@@ -5810,6 +6722,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Alligator (Epic, Combat) + Chameleon (Legendary, Forest)",
    "Cod (Common, Water) + Cryo (Epic, Water)",
@@ -5835,6 +6751,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing King Cobra Shard with Combat Category and Rare or higher."
+  ],
+  "fuse_inputs": [
+   "King Cobra Shard",
+   "Combat&Rare+"
   ],
   "fusion_examples": [
    "Alligator (Epic, Combat) + Chameleon (Legendary, Forest)",
@@ -5862,6 +6782,10 @@
   "fusion_rules": [
    "Fusing Gecko Shard with Forest Category and Rare or higher."
   ],
+  "fuse_inputs": [
+   "Gecko Shard",
+   "Forest&Rare+"
+  ],
   "fusion_examples": [
    "Beaconmite (Rare, Forest) + Gecko (Rare, Forest) = 2x",
    "Invisibug (Rare, Forest) + Gecko (Rare, Forest) = 2x",
@@ -5887,6 +6811,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Eel Shard with Water Category and Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Eel Shard",
+   "Water&Rare+"
   ],
   "fusion_examples": [
    "Piranha (Rare, Water) + Eel (Rare, Water) = 2x",
@@ -5916,6 +6844,10 @@
   "fusion_rules": [
    "Fusing Zealot Shard with Combat Category and Elusive Family."
   ],
+  "fuse_inputs": [
+   "Zealot Shard",
+   "Combat&Elusive"
+  ],
   "fusion_examples": [
    "Zealot (Common, Combat) + Black Widow (Rare, Combat) = 2x",
    "Zealot (Common, Combat) + Mimic (Epic, Combat) = 2x",
@@ -5943,6 +6875,10 @@
   "obtainable_directly": true,
   "fusion_rules": [
    "Fusing Ladybug Shard with Bug Family and Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Ladybug Shard",
+   "Bug&Rare+"
   ],
   "fusion_examples": [
    "Special Zealot (Epic, Combat) + Chameleon (Legendary, Forest)",
@@ -5975,6 +6911,10 @@
    "Fusing Moray Eel Shard with Firefox and Firefly Shards.",
    "Fusing Eel Shard with Moray Eel Shard."
   ],
+  "fuse_inputs": [
+   "Moray Eel Shard",
+   "Firefox Shard|Firefly Shard|Eel Shard"
+  ],
   "fusion_examples": [
    "Special Zealot (Epic, Combat) + Chameleon (Legendary, Forest)",
    "Lunar Moth (Epic, Forest) + Chameleon (Legendary, Forest)",
@@ -6000,6 +6940,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Special Zealot (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Special Zealot (Epic, Combat)",
@@ -6025,6 +6969,10 @@
   "fusion_rules": [
    "Fusing Shulker Family and Rare or higher with Epic or higher."
   ],
+  "fuse_inputs": [
+   "Shulker&Rare+",
+   "Epic+"
+  ],
   "fusion_examples": [
    "Lunar Moth (Epic, Forest) + Chameleon (Legendary, Forest)",
    "Fire Eel (Epic, Water) + Chameleon (Legendary, Forest)",
@@ -6049,6 +6997,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Abyssal Miner (Epic, Water)",
    "Cod (Common, Water) + Fire Eel (Epic, Water)",
@@ -6074,6 +7026,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Bal (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Bal (Epic, Combat)",
@@ -6099,6 +7055,10 @@
   "fusion_rules": [
    "Fusing Phantom Family with Epic or higher."
   ],
+  "fuse_inputs": [
+   "Phantom",
+   "Epic+"
+  ],
   "fusion_examples": [
    "Phanpyre (Common, Forest) + Alligator (Epic, Combat) = 2x",
    "Phanpyre (Common, Forest) + Abyssal Miner (Epic, Water) = 2x",
@@ -6123,6 +7083,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Water Hydra (Epic, Water)",
    "Howling Spirit (Common, Combat) + Water Hydra (Epic, Water)",
@@ -6146,6 +7110,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Flare (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Flare (Epic, Combat)",
@@ -6172,6 +7140,10 @@
   "fusion_rules": [
    "Fusing Iguana Shard with Forest Category and Rare or higher."
   ],
+  "fuse_inputs": [
+   "Iguana Shard",
+   "Forest&Rare+"
+  ],
   "fusion_examples": [
    "Loch Emperor (Epic, Water) + Chameleon (Legendary, Forest)",
    "Prince (Epic, Combat) + Chameleon (Legendary, Forest)",
@@ -6196,6 +7168,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Crustacean Family and Rare or higher with Treasure Fish Family and Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Crustacean&Rare+",
+   "Treasure Fish&Rare+"
   ],
   "fusion_examples": [
    "Piranha (Rare, Water) + Mantis Shrimp (Rare, Water) = 2x",
@@ -6223,6 +7199,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Prince (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Prince (Epic, Combat)",
@@ -6248,6 +7228,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Mimic (Epic, Combat) + Chameleon (Legendary, Forest)",
    "Komodo Dragon (Epic, Forest) + Chameleon (Legendary, Forest)",
@@ -6275,6 +7259,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Loch Emperor (Epic, Water)",
    "Howling Spirit (Common, Combat) + Loch Emperor (Epic, Water)",
@@ -6302,6 +7290,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Mimic (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Mimic (Epic, Combat)",
@@ -6326,6 +7318,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Bird Family with Epic or higher."
+  ],
+  "fuse_inputs": [
+   "Bird",
+   "Epic+"
   ],
   "fusion_examples": [
    "Wolverine (Epic, Forest) + Chameleon (Legendary, Forest)",
@@ -6352,6 +7348,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Alligator Shard with Combat Category and Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Alligator Shard",
+   "Combat&Rare+"
   ],
   "fusion_examples": [
    "Glacite Walker (Rare, Combat) + Alligator (Epic, Combat) = 2x",
@@ -6381,6 +7381,10 @@
   "fusion_rules": [
    "Fusing Praying Mantis Shard with Bezal, Cinderbat, Flare, Lava Flame, Fire Eel, Bal, and Flaming Spider Shards."
   ],
+  "fuse_inputs": [
+   "Praying Mantis Shard",
+   "Bezal Shard|Cinderbat Shard|Flare Shard|Lava Flame Shard|Fire Eel Shard|Bal Shard|Flaming Spider Shard"
+  ],
   "fusion_examples": [
    "Bezal (Common, Combat) + Praying Mantis (Uncommon, Forest) = 2x",
    "Praying Mantis (Uncommon, Forest) + Flaming Spider (Uncommon, Combat) = 2x",
@@ -6408,6 +7412,10 @@
   "fusion_rules": [
    "Fusing Moray Eel Shard with Water Category and Rare or higher."
   ],
+  "fuse_inputs": [
+   "Moray Eel Shard",
+   "Water&Rare+"
+  ],
   "fusion_examples": [
    "Firefly (Epic, Forest) + Chameleon (Legendary, Forest)",
    "Piranha (Rare, Water) + Moray Eel (Epic, Water) = 2x",
@@ -6434,6 +7442,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Barbarian Duke X (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Barbarian Duke X (Epic, Combat)",
@@ -6461,6 +7473,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Lunar Moth (Epic, Forest)",
    "Cod (Common, Water) + Wolverine (Epic, Forest)",
@@ -6487,6 +7503,10 @@
   "fusion_rules": [
    "Fusing Shellwise Shard with Water Category and Rare or higher."
   ],
+  "fuse_inputs": [
+   "Shellwise Shard",
+   "Water&Rare+"
+  ],
   "fusion_examples": [
    "Piranha (Rare, Water) + Shellwise (Epic, Water) = 2x",
    "Abyssal Lanternfish (Rare, Water) + Shellwise (Epic, Water) = 2x",
@@ -6511,6 +7531,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Cave Dweller Family and Rare or higher with Cave Dweller Family and Epic or higher."
+  ],
+  "fuse_inputs": [
+   "Cave Dweller&Rare+",
+   "Cave Dweller&Epic+"
   ],
   "fusion_examples": [
    "Thyst (Rare, Forest) + Abyssal Miner (Epic, Water) = 2x",
@@ -6540,6 +7564,10 @@
   "fusion_rules": [
    "Fusing Firefly Shard with Dragon Family."
   ],
+  "fuse_inputs": [
+   "Firefly Shard",
+   "Dragon"
+  ],
   "fusion_examples": [
    "Draconic (Rare, Combat) + Firefly (Epic, Forest) = 2x",
    "Firefly (Epic, Forest) + Power Dragon (Legendary, Combat) = 2x",
@@ -6564,6 +7592,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Ghost (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Ghost (Epic, Combat)",
@@ -6588,6 +7620,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Sphinx (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Sphinx (Epic, Combat)",
@@ -6612,6 +7648,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + XYZ (Epic, Forest)",
    "Cod (Common, Water) + Dragonfly (Epic, Forest)",
@@ -6637,6 +7677,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Shellwise (Epic, Water)",
    "Howling Spirit (Common, Combat) + Shellwise (Epic, Water)",
@@ -6662,6 +7706,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "King Minos (Epic, Combat) + Chameleon (Legendary, Forest)",
    "Dive Ghast (Epic, Forest) + Chameleon (Legendary, Forest)",
@@ -6687,6 +7735,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Dive Ghast (Epic, Forest) + Chameleon (Legendary, Forest)",
    "Silkbreeze (Epic, Water) + Chameleon (Legendary, Forest)",
@@ -6713,6 +7765,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Silkbreeze (Epic, Water)",
    "Howling Spirit (Common, Combat) + Silkbreeze (Epic, Water)",
@@ -6738,6 +7794,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + King Minos (Epic, Combat)",
    "Cod (Common, Water) + Gemzie (Epic, Combat)",
@@ -6764,6 +7824,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Rabbit Godmother (Epic, Forest) + Chameleon (Legendary, Forest)",
    "Giant Isopod (Epic, Water) + Chameleon (Legendary, Forest)",
@@ -6789,6 +7853,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Inferno Demonlord (Epic, Combat) + Chameleon (Legendary, Forest)",
    "Queen Bee (Epic, Forest) + Chameleon (Legendary, Forest)"
@@ -6817,6 +7885,10 @@
   "fusion_rules": [
    "Fusing Queen Bee Shard with Lunar Moth Shard."
   ],
+  "fuse_inputs": [
+   "Queen Bee Shard",
+   "Lunar Moth Shard"
+  ],
   "fusion_examples": [
    "Lunar Moth (Epic, Forest) + Queen Bee (Epic, Forest) = 2x",
    "Queen Bee (Epic, Forest) + Chameleon (Legendary, Forest)",
@@ -6840,6 +7912,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Inferno Demonlord (Epic, Combat)",
    "Cod (Common, Water) + Bonzo (Epic, Combat)",
@@ -6863,6 +7939,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Scarf (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Scarf (Epic, Combat)",
@@ -6887,6 +7967,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Dive Ghast (Epic, Forest)",
    "Cod (Common, Water) + Rabbit Godmother (Epic, Forest)",
@@ -6912,6 +7996,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Thorn (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Thorn (Epic, Combat)",
@@ -6937,6 +8025,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Gimmiegold Shard with Legendary or higher."
+  ],
+  "fuse_inputs": [
+   "Gimmiegold Shard",
+   "Legendary+"
   ],
   "fusion_examples": [
    "Gimmiegold (Rare, Water) + Nessie (Legendary, Water) = 2x",
@@ -6964,6 +8056,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Scatha (Epic, Combat)",
    "Howling Spirit (Common, Combat) + Scatha (Epic, Combat)",
@@ -6988,6 +8084,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Forest Category and Legendary with Elemental Family and Epic or higher."
+  ],
+  "fuse_inputs": [
+   "Forest&Legendary",
+   "Elemental&Epic+"
   ],
   "fusion_examples": [
    "Shellwise (Epic, Water) + Chameleon (Legendary, Forest)",
@@ -7014,6 +8114,10 @@
   "fusion_rules": [
    "Fusing Water Category and Legendary with Elemental Family and Epic or higher."
   ],
+  "fuse_inputs": [
+   "Water&Legendary",
+   "Elemental&Epic+"
+  ],
   "fusion_examples": [
    "Dragonfly (Epic, Forest) + Chameleon (Legendary, Forest)",
    "Sphinx (Epic, Combat) + Chameleon (Legendary, Forest)",
@@ -7038,6 +8142,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Combat Category and Legendary with Elemental Family and Epic or higher."
+  ],
+  "fuse_inputs": [
+   "Combat&Legendary",
+   "Elemental&Epic+"
   ],
   "fusion_examples": [
    "Littlefoot (Epic, Combat) + Chameleon (Legendary, Forest)",
@@ -7064,6 +8172,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": []
  },
  "SHARD_NESSIE": {
@@ -7085,6 +8197,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Chameleon (Legendary, Forest)",
    "Cod (Common, Water) + Blizzard (Legendary, Water)",
@@ -7110,6 +8226,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Caiman Shard with Combat Category and Epic or higher."
+  ],
+  "fuse_inputs": [
+   "Caiman Shard",
+   "Combat&Epic+"
   ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Chameleon (Legendary, Forest)",
@@ -7137,6 +8257,10 @@
   "fusion_rules": [
    "Fusing Komodo Dragon Shard with Forest Category and Epic or higher."
   ],
+  "fuse_inputs": [
+   "Komodo Dragon Shard",
+   "Forest&Epic+"
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Chameleon (Legendary, Forest)",
    "Chameleon (Legendary, Forest) + Nessie (Legendary, Water)",
@@ -7163,6 +8287,10 @@
   "fusion_rules": [
    "Fusing Leatherback Shard with Water Category and Epic or higher."
   ],
+  "fuse_inputs": [
+   "Leatherback Shard",
+   "Water&Epic+"
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Nessie (Legendary, Water)",
    "Abyssal Miner (Epic, Water) + Leatherback (Epic, Water) = 2x",
@@ -7186,6 +8314,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Tempest (Legendary, Combat)",
    "Cod (Common, Water) + Tiamat (Legendary, Combat)",
@@ -7210,6 +8342,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Rabbit Godmother Shard with Combat Category and Legendary or higher."
+  ],
+  "fuse_inputs": [
+   "Rabbit Godmother Shard",
+   "Combat&Legendary+"
   ],
   "fusion_examples": [
    "Rabbit Godmother (Epic, Forest) + End Stone Protector (Legendary, Combat) = 2x",
@@ -7237,6 +8373,10 @@
   "fusion_rules": [
    "Fusing Sea Serpent Shard with Water Category and Epic or higher."
   ],
+  "fuse_inputs": [
+   "Sea Serpent Shard",
+   "Water&Epic+"
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + End Stone Protector (Legendary, Combat)",
    "Abyssal Miner (Epic, Water) + Sea Serpent (Epic, Water) = 2x",
@@ -7261,6 +8401,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Lapis Skeleton Shard with Ghost Shard or Legendary or higher."
+  ],
+  "fuse_inputs": [
+   "Lapis Skeleton Shard",
+   "Ghost Shard|Legendary+"
   ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + End Stone Protector (Legendary, Combat)",
@@ -7287,6 +8431,10 @@
   "fusion_rules": [
    "Fusing Dragonfly Shard with Lunar Moth Shard."
   ],
+  "fuse_inputs": [
+   "Dragonfly Shard",
+   "Lunar Moth Shard"
+  ],
   "fusion_examples": [
    "Lunar Moth (Epic, Forest) + Dragonfly (Epic, Forest) = 2x",
    "Chameleon (Legendary, Forest) + Rabbit Godfather (Legendary, Forest)",
@@ -7312,6 +8460,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Nessie (Legendary, Water)",
    "Howling Spirit (Common, Combat) + Nessie (Legendary, Water)",
@@ -7337,6 +8489,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + End Stone Protector (Legendary, Combat)",
    "Howling Spirit (Common, Combat) + End Stone Protector (Legendary, Combat)",
@@ -7362,6 +8518,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Spike (Legendary, Water)",
    "Howling Spirit (Common, Combat) + Spike (Legendary, Water)",
@@ -7388,6 +8548,10 @@
   "obtainable_directly": true,
   "fusion_rules": [
    "Fusing Kraken Shard with Kraken Shard."
+  ],
+  "fuse_inputs": [
+   "Kraken Shard",
+   "Kraken Shard"
   ],
   "fusion_examples": [
    "Kraken (Legendary, Combat) + Kraken (Legendary, Combat) = 2x",
@@ -7416,6 +8580,10 @@
   "fusion_rules": [
    "Fusing Kraken Shard with Water Category."
   ],
+  "fuse_inputs": [
+   "Kraken Shard",
+   "Water"
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Kraken (Legendary, Combat) = 2x",
    "Dumpster Diver (Common, Water) + Kraken (Legendary, Combat) = 2x",
@@ -7442,6 +8610,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Daemon (Legendary, Combat)",
    "Chameleon (Legendary, Forest) + Moltenfish (Legendary, Water)"
@@ -7466,6 +8638,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Moltenfish (Legendary, Water)",
    "Chameleon (Legendary, Forest) + Doomspiral (Legendary, Combat)"
@@ -7488,6 +8664,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Taurus (Legendary, Water)",
    "Cod (Common, Water) + Moltenfish (Legendary, Water)",
@@ -7516,6 +8696,10 @@
   "fusion_rules": [
    "Fusing Kraken Shard with Bird Family."
   ],
+  "fuse_inputs": [
+   "Kraken Shard",
+   "Bird"
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Doomspiral (Legendary, Combat)",
    "Chameleon (Legendary, Forest) + Macaw (Legendary, Forest)",
@@ -7540,6 +8724,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Shulker Family and Epic or higher with Legendary or higher."
+  ],
+  "fuse_inputs": [
+   "Shulker&Epic+",
+   "Legendary+"
   ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Macaw (Legendary, Forest)",
@@ -7569,6 +8757,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Shinyfish (Legendary, Water)",
    "Howling Spirit (Common, Combat) + Shinyfish (Legendary, Water)",
@@ -7597,6 +8789,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Kraken (Legendary, Combat)",
    "Cod (Common, Water) + Daemon (Legendary, Combat)",
@@ -7624,6 +8820,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Macaw (Legendary, Forest)",
    "Dumpster Diver (Common, Water) + Macaw (Legendary, Forest)",
@@ -7650,6 +8850,10 @@
   "fusion_rules": [
    "Fusing Tortoise Shard with Water Category and Epic or higher."
   ],
+  "fuse_inputs": [
+   "Tortoise Shard",
+   "Water&Epic+"
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Lord Jawbus (Legendary, Water)",
    "Chameleon (Legendary, Forest) + Hellwisp (Legendary, Combat)",
@@ -7675,6 +8879,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Hellwisp (Legendary, Combat)",
    "Howling Spirit (Common, Combat) + Hellwisp (Legendary, Combat)",
@@ -7700,6 +8908,10 @@
   "fusion_rules": [
    "Fusing Bird Family with Legendary or higher."
   ],
+  "fuse_inputs": [
+   "Bird",
+   "Legendary+"
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Cinderbat (Legendary, Forest)",
    "Chameleon (Legendary, Forest) + Power Dragon (Legendary, Combat)",
@@ -7722,6 +8934,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Shinyfish Shard with Bezal, Cinderbat, Flare, Lava Flame, Fire Eel, Bal, and Flaming Spider Shards."
+  ],
+  "fuse_inputs": [
+   "Shinyfish Shard",
+   "Bezal Shard|Cinderbat Shard|Flare Shard|Lava Flame Shard|Fire Eel Shard|Bal Shard|Flaming Spider Shard"
   ],
   "fusion_examples": [
    "Bezal (Common, Combat) + Shinyfish (Legendary, Water) = 2x",
@@ -7750,6 +8966,10 @@
   "fusion_rules": [
    "Fusing Power Dragon Shard with any Shard."
   ],
+  "fuse_inputs": [
+   "Power Dragon Shard",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Power Dragon (Legendary, Combat) = 2x",
    "Howling Spirit (Common, Combat) + Power Dragon (Legendary, Combat) = 2x",
@@ -7774,6 +8994,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Condor Shard with Legendary or higher."
+  ],
+  "fuse_inputs": [
+   "Condor Shard",
+   "Legendary+"
   ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Apex Dragon (Legendary, Combat)",
@@ -7802,6 +9026,10 @@
   "fusion_rules": [
    "Fusing Queen Bee Shard with Queen Ant Shard."
   ],
+  "fuse_inputs": [
+   "Queen Bee Shard",
+   "Queen Ant Shard"
+  ],
   "fusion_examples": [
    "Queen Ant (Uncommon, Forest) + Queen Bee (Epic, Forest) = 2x",
    "Chameleon (Legendary, Forest) + Apex Dragon (Legendary, Combat)",
@@ -7828,6 +9056,10 @@
   "fusion_rules": [
    "Fusing Power Dragon Shard with Kraken Shard."
   ],
+  "fuse_inputs": [
+   "Power Dragon Shard",
+   "Kraken Shard"
+  ],
   "fusion_examples": [
    "Kraken (Legendary, Combat) + Power Dragon (Legendary, Combat) = 2x",
    "Chameleon (Legendary, Forest) + Apex Dragon (Legendary, Combat)",
@@ -7852,6 +9084,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Blue Crab Shard with Poltergeist Family and Rare or higher."
+  ],
+  "fuse_inputs": [
+   "Blue Crab Shard",
+   "Poltergeist&Rare+"
   ],
   "fusion_examples": [
    "Hideyho (Rare, Forest) + Blue Crab (Epic, Water) = 2x",
@@ -7879,6 +9115,10 @@
   "fusion_rules": [
    "Fusing Apex Dragon Shard with Kraken Shard."
   ],
+  "fuse_inputs": [
+   "Apex Dragon Shard",
+   "Kraken Shard"
+  ],
   "fusion_examples": [
    "Kraken (Legendary, Combat) + Apex Dragon (Legendary, Combat) = 2x",
    "Chameleon (Legendary, Forest) + Jormung (Legendary, Combat)",
@@ -7905,6 +9145,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Cinderbat (Legendary, Forest)",
    "Howling Spirit (Common, Combat) + Cinderbat (Legendary, Forest)",
@@ -7927,6 +9171,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Sun Fish Shard with Sun Fish Shard."
+  ],
+  "fuse_inputs": [
+   "Sun Fish Shard",
+   "Sun Fish Shard"
   ],
   "fusion_examples": [
    "Sun Fish (Legendary, Water) + Sun Fish (Legendary, Water) = 2x"
@@ -7952,6 +9200,10 @@
   "fusion_rules": [
    "Fusing Etherdrake Shard with Jormung Shard."
   ],
+  "fuse_inputs": [
+   "Etherdrake Shard",
+   "Jormung Shard"
+  ],
   "fusion_examples": [
    "Jormung (Legendary, Combat) + Etherdrake (Legendary, Combat) = 2x"
   ]
@@ -7974,6 +9226,10 @@
   "obtainable_directly": false,
   "fusion_rules": [
    "Fusing Elemental Family and Legendary with Galaxy Fish Shard."
+  ],
+  "fuse_inputs": [
+   "Elemental&Legendary",
+   "Galaxy Fish Shard"
   ],
   "fusion_examples": [
    "Doomspiral (Legendary, Combat) + Galaxy Fish (Legendary, Water) = 2x",
@@ -8000,6 +9256,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Molthorn (Legendary, Combat)",
    "Chameleon (Legendary, Forest) + Starborn (Legendary, Water)"
@@ -8024,6 +9284,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Primordial (Legendary, Combat)",
    "Chameleon (Legendary, Forest) + Starborn (Legendary, Water)"
@@ -8052,6 +9316,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Cod (Common, Water) + Lord Jawbus (Legendary, Water)",
    "Howling Spirit (Common, Combat) + Lord Jawbus (Legendary, Water)",
@@ -8078,6 +9346,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Cocoaleech (Legendary, Forest)",
    "Chameleon (Legendary, Forest) + Titanoboa (Legendary, Water)"
@@ -8100,6 +9372,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": []
  },
  "SHARD_TIMESTALK_CLONE": {
@@ -8122,6 +9398,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Paragon (Legendary, Combat)"
   ]
@@ -8145,6 +9425,10 @@
   ],
   "obtainable_directly": true,
   "fusion_rules": [],
+  "fuse_inputs": [
+   "",
+   ""
+  ],
   "fusion_examples": [
    "Chameleon (Legendary, Forest) + Timestalk Clone (Legendary, Combat)"
   ]

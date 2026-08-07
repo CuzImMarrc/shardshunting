@@ -72,6 +72,9 @@
       <option value="">Alle Kategorien</option>
       <option>Forest</option><option>Water</option><option>Combat</option>
     </select>
+    <select id="fFamily" aria-label="Familie filtern">
+      <option value="">Alle Familien</option>
+    </select>
     <select id="fSource" aria-label="Beschaffung filtern">
       <option value="">Beschaffung: egal</option>
       <option value="direct">Direkt jagdbar</option>
@@ -90,6 +93,11 @@
   <p class="empty" id="empty" hidden>Nichts gefunden. Filter zuruecksetzen?</p>
 
 </main>
+
+<dialog id="detail" class="detail" aria-label="Shard-Details">
+  <button type="button" class="detail-close" id="detailClose" aria-label="Schliessen">&times;</button>
+  <div id="detailBody"></div>
+</dialog>
 
 <footer class="foot wrap">
   <p>Shard-Daten aus dem offenen <a href="https://github.com/Campionnn/SkyShards" target="_blank" rel="noopener">SkyShards</a>-Datensatz, Profildaten direkt von der Hypixel-API. Kein Server dazwischen &mdash; die Seite laeuft komplett in deinem Browser.</p>

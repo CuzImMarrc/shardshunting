@@ -33,6 +33,8 @@ const state = {
   rows: [],          // aufbereitete Zeilen des aktiven Profils
   view: "progress",
   totals: null,
+  detailId: null,
+  detailOwnedOnly: false,
 };
 
 /* ---------- Rechnen ---------- */
@@ -248,9 +250,10 @@ function cardHTML(row) {
   if (!direct.length) tags.push('<span class="tag fusion-only">nur Fusion</span>');
   tags.push(`<span class="tag">${esc(i.category)}</span>`);
   if (i.type) tags.push(`<span class="tag">${esc(i.type)}</span>`);
-  (i.family || []).forEach((f) => tags.push(`<span class="tag">${esc(f)}</span>`));
+  (i.family || []).forEach((f) => tags.push(
+    `<button type="button" class="tag fam" data-family="${esc(f)}" aria-pressed="false" title="Nach dieser Familie filtern">${esc(f)}</button>`));
 
-  return `<article class="card">
+  return `<article class="card" data-id="${esc(row.id)}" tabindex="0" role="button" aria-label="${esc(i.name)} Shard - Details">
     <div class="card-top ${rc}">
       <span class="shard-mark"></span>
       <h3>${esc(i.name)}</h3>
@@ -268,6 +271,7 @@ function visibleRows() {
   const q = $("search").value.trim().toLowerCase();
   const fr = $("fRarity").value;
   const fc = $("fCategory").value;
+  const ff = $("fFamily").value;
   const fs = $("fSource").value;
   const sort = $("fSort").value;
 
@@ -277,6 +281,7 @@ function visibleRows() {
     if (state.view === "maxed" && !(r.unlocked && r.remaining === 0)) return false;
     if (fr && r.info.rarity !== fr) return false;
     if (fc && r.info.category !== fc) return false;
+    if (ff && !(r.info.family || []).includes(ff)) return false;
     const isDirect = (r.info.direct_methods || []).length > 0;
     if (fs === "direct" && !isDirect) return false;
     if (fs === "fusion" && isDirect) return false;
@@ -311,6 +316,11 @@ function visibleRows() {
 function renderGrid() {
   const rows = visibleRows();
   $("grid").innerHTML = rows.map(cardHTML).join("");
+  const active = $("fFamily").value;
+  if (active) {
+    $("grid").querySelectorAll(`.tag.fam[data-family="${CSS.escape(active)}"]`)
+      .forEach((el) => el.setAttribute("aria-pressed", "true"));
+  }
   $("empty").hidden = rows.length > 0;
   $("count").textContent = rows.length
     ? `${rows.length} ${rows.length === 1 ? "Shard" : "Shards"}`
@@ -321,6 +331,131 @@ function renderAll(profile) {
   renderSummary(profile);
   renderTabs();
   renderGrid();
+}
+
+/* ---------- Fusions-Regeln ---------- */
+
+/* Regelsyntax aus den Quelldaten:
+   "&" = und, "|" = oder, "Rare+" = Rare oder hoeher,
+   "Kraken Shard" = genau dieser Shard, "Mining Shards" = Attribut-Bereich Mining. */
+function matchesRule(rule, info) {
+  if (!rule) return false;
+  return rule.split("&").every((andPart) =>
+    andPart.split("|").some((atom) => {
+      const a = atom.trim();
+      if (!a) return false;
+      if (a.endsWith(" Shard")) return info.name === a.slice(0, -6);
+      if (a.endsWith(" Shards")) return info.type === a.slice(0, -7);
+      const bare = a.endsWith("+") ? a.slice(0, -1) : a;
+      if (RARITIES.includes(bare)) {
+        return a.endsWith("+")
+          ? RARITIES.indexOf(info.rarity) >= RARITIES.indexOf(bare)
+          : info.rarity === bare;
+      }
+      if (["Forest", "Water", "Combat"].includes(a)) return info.category === a;
+      return (info.family || []).includes(a);
+    }));
+}
+
+function ruleText(rule) {
+  return rule.split("&")
+    .map((p) => p.split("|").map((s) => s.trim()).join(" oder "))
+    .join(" + ");
+}
+
+function candidates(rule, excludeId) {
+  if (!rule) return [];
+  return state.rows
+    .filter((r) => r.id !== excludeId && matchesRule(rule, r.info))
+    .sort((a, b) =>
+      (b.box > 0) - (a.box > 0) ||
+      b.box - a.box ||
+      ((a.info.direct_methods || []).length === 0) - ((b.info.direct_methods || []).length === 0) ||
+      RARITIES.indexOf(a.info.rarity) - RARITIES.indexOf(b.info.rarity) ||
+      a.info.name.localeCompare(b.info.name));
+}
+
+function slotHTML(label, rule, onlyOwned, excludeId) {
+  if (!rule) {
+    return `<div class="slot"><div class="slot-h"><b>${label}</b></div>
+      <p class="d-none">Kein zweiter Shard noetig.</p></div>`;
+  }
+  let list = candidates(rule, excludeId);
+  const total = list.length;
+  if (onlyOwned) list = list.filter((r) => r.box > 0);
+
+  const items = list.map((r) => {
+    const noDirect = (r.info.direct_methods || []).length === 0;
+    const st = r.box > 0
+      ? `<span class="st have">${r.box}x in der Box</span>`
+      : `<span class="st">${r.unlocked ? "Lvl " + r.level : "noch nie"}</span>`;
+    return `<li><button type="button" class="pick r-${r.info.rarity}" data-open="${esc(r.id)}">
+      <span class="nm">${esc(r.info.name)}</span>
+      ${noDirect ? '<span class="only-fusion">nur Fusion</span>' : ""}
+      ${st}
+    </button></li>`;
+  }).join("");
+
+  return `<div class="slot">
+    <div class="slot-h"><b>${label}</b><span class="slot-rule">${esc(ruleText(rule))}</span>
+      <span class="slot-n">${onlyOwned ? list.length + " / " + total : total}</span></div>
+    ${items ? `<ul class="slot-list">${items}</ul>` : '<p class="d-none">Nichts davon liegt in deiner Box.</p>'}
+  </div>`;
+}
+
+function openDetail(id) {
+  const row = state.rows.find((r) => r.id === id);
+  if (!row) return;
+  state.detailId = id;
+
+  const i = row.info;
+  const rc = "r-" + i.rarity;
+  const [r1, r2] = i.fuse_inputs || ["", ""];
+  const onlyOwned = state.detailOwnedOnly;
+  const direct = i.direct_methods || [];
+
+  const status = row.unlocked
+    ? `Level ${ROMAN[row.level]} &middot; ${row.count}/${row.max} Shards${row.remaining ? ` &middot; noch ${row.remaining}` : " &middot; fertig"}`
+    : "Noch nie syphont";
+
+  const parts = [`
+    <div class="d-head ${rc}">
+      <span class="shard-mark"></span>
+      <h2>${esc(i.name)} Shard</h2>
+      <span class="rar">${esc(i.rarity)}</span>
+    </div>
+    <p class="d-attr">${esc(i.attribute || "")}</p>
+    <p class="d-effect">${esc(i.effect || "")}</p>
+    <p class="d-effect">${status}${row.box ? ` &middot; <span style="color:var(--good)">${row.box}x in der Box</span>` : ""}</p>`];
+
+  if (direct.length) {
+    parts.push(`<div class="d-block"><h3>So bekommst du ihn</h3><div class="d-lore">
+      ${direct.map((m) => `<p class="how">&bull; ${esc(m)}</p>`).join("")}</div></div>`);
+  }
+
+  if (r1 || r2) {
+    parts.push(`<div class="d-block">
+      <h3>Fusion</h3>
+      <div class="d-lore">${(i.fusion_rules || []).map((x) => `<p class="rule">&bull; ${esc(x)}</p>`).join("")}</div>
+      <label class="d-filter"><input type="checkbox" id="ownedOnly" ${onlyOwned ? "checked" : ""}>
+        <span>Nur zeigen, was in meiner Box liegt</span></label>
+      <div class="slots">
+        ${slotHTML("Slot 1", r1, onlyOwned, id)}
+        ${slotHTML("Slot 2", r2, onlyOwned, id)}
+      </div>
+    </div>`);
+  } else if (!direct.length) {
+    parts.push('<div class="d-block"><p class="d-none">Fuer diesen Shard ist keine Fusions-Regel hinterlegt.</p></div>');
+  }
+
+  if ((i.fusion_examples || []).length) {
+    parts.push(`<div class="d-block"><h3>Fertige Kombis</h3><div class="d-lore">
+      ${i.fusion_examples.map((e) => `<p class="fuse">&bull; ${esc(e)}</p>`).join("")}</div></div>`);
+  }
+
+  $("detailBody").innerHTML = parts.join("");
+  const dlg = $("detail");
+  if (!dlg.open) dlg.showModal();
 }
 
 /* ---------- CSV ---------- */
@@ -445,6 +580,18 @@ function explain(err) {
   }
   $("dbCount").textContent = Object.keys(state.db).length;
 
+  const families = new Set();
+  for (const info of Object.values(state.db)) {
+    (info.family || []).forEach((f) => families.add(f));
+  }
+  const famSel = $("fFamily");
+  [...families].sort((a, b) => a.localeCompare(b)).forEach((f) => {
+    const o = document.createElement("option");
+    o.value = f;
+    o.textContent = f;
+    famSel.appendChild(o);
+  });
+
   const savedName = store.get("hb_name");
   const savedKey = store.get("hb_key");
   if (savedName) $("username").value = savedName;
@@ -462,6 +609,43 @@ function explain(err) {
     renderGrid();
   });
 
-  ["search", "fRarity", "fCategory", "fSource", "fSort"].forEach((id) =>
+  ["search", "fRarity", "fCategory", "fFamily", "fSource", "fSort"].forEach((id) =>
     $(id).addEventListener("input", renderGrid));
+
+  // Familien-Tag filtert, Klick auf die Karte oeffnet die Details
+  $("grid").addEventListener("click", (e) => {
+    const tag = e.target.closest(".tag.fam");
+    if (tag) {
+      const sel = $("fFamily");
+      sel.value = sel.value === tag.dataset.family ? "" : tag.dataset.family;
+      renderGrid();
+      return;
+    }
+    const card = e.target.closest(".card");
+    if (card) openDetail(card.dataset.id);
+  });
+
+  $("grid").addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const card = e.target.closest(".card");
+    if (!card || e.target.closest(".tag.fam")) return;
+    e.preventDefault();
+    openDetail(card.dataset.id);
+  });
+
+  // Im Dialog: Klick auf einen Kandidaten springt zu dessen Details
+  $("detailBody").addEventListener("click", (e) => {
+    const pick = e.target.closest(".pick");
+    if (pick) { openDetail(pick.dataset.open); return; }
+  });
+  $("detailBody").addEventListener("change", (e) => {
+    if (e.target.id === "ownedOnly") {
+      state.detailOwnedOnly = e.target.checked;
+      openDetail(state.detailId);
+    }
+  });
+  $("detailClose").addEventListener("click", () => $("detail").close());
+  $("detail").addEventListener("click", (e) => {
+    if (e.target === $("detail")) $("detail").close();   // Klick auf den Hintergrund
+  });
 })();

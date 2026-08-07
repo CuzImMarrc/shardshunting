@@ -82,6 +82,9 @@ def main():
             "direct_methods": direct,                # leer = nur ueber Fusion
             "obtainable_directly": bool(direct),
             "fusion_rules": fusion_rules,
+            # Maschinenlesbare Regel: "Forest&Common" + "Uncommon+"
+            # & = und, | = oder, "X+" = X oder hoeher, "X Shard" = genau dieser Shard
+            "fuse_inputs": [p.get("input1") or "", p.get("input2") or ""],
             "fusion_examples": [],
         }
 

@@ -41,6 +41,18 @@ Das Skript zieht die Daten aus dem offenen
 [SkyShards-Datensatz](https://github.com/Campionnn/SkyShards) und schreibt `shards.json` neu.
 Sonst muss nichts angefasst werden.
 
+## Fusions-Ansicht
+
+Ein Klick auf eine Shard-Karte öffnet die Detailansicht. Hat der Shard eine Fusions-Regel, listet
+sie für Slot 1 und Slot 2 alle Shards auf, die dort tatsächlich hineinpassen — mit dem Hinweis, was
+davon schon in der eigenen Hunting Box liegt. Ein Klick auf einen Kandidaten springt zu dessen
+Details, so lässt sich eine Fusionskette rückwärts verfolgen.
+
+Die Regeln stehen maschinenlesbar in `shards.json` unter `fuse_inputs`, z.B.
+`["Forest&Legendary", "Elemental&Epic+"]`. Die Syntax: `&` = und, `|` = oder, `X+` = X oder höher,
+`Name Shard` = genau dieser Shard, `Mining Shards` = Attribut-Bereich Mining. Ausgewertet wird das
+in `app.js` in `matchesRule()`.
+
 ## Wie die Level berechnet werden
 
 Die API liefert unter `attributes.stacks` die Gesamtzahl syphonter Shards pro Attribut. Wie viele
