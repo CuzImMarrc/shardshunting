@@ -111,6 +111,9 @@ def main():
             real_id[e["shardId"]] = internal.replace("ATTRIBUTE_SHARD_", "").split(";")[0].lower()
             internal_by_sid[e["shardId"]] = internal
 
+    # Shards, die man nicht syphonen kann (nur Fusionsmaterial, z.B. Chameleon)
+    fusion_only = set(neu.get("unconsumable_attributes") or ["SHARD_CHAMELEON"])
+
     print(f"Lade Kopf-Texturen fuer {len(internal_by_sid)} Shards ...")
     with ThreadPoolExecutor(max_workers=12) as pool:
         sids = list(internal_by_sid)
@@ -141,6 +144,7 @@ def main():
             "effect": " ".join(flatten(d.get("description")).split()),
             "rarity": (p.get("rarity") or fd.get("rarity") or "").capitalize(),
             "skin": skins.get(sid),                  # textures.minecraft.net/texture/<skin>
+            "syphonable": fd.get("internal_id") not in fusion_only,
             "category": p.get("category"),           # Forest / Water / Combat
             "type": fd.get("type"),                  # Bereich: Foraging, Fishing, ...
             "family": p.get("family") or [],
@@ -219,6 +223,7 @@ def main():
 
     renamed = sum(1 for i in out.values() if i["attribute_aliases"])
     no_skin = [i["name"] for i in out.values() if not i["skin"]]
+    print("Nicht syphonbar:", ", ".join(i["name"] for i in out.values() if not i["syphonable"]) or "-")
     print(f"Koepfe: {len(out) - len(no_skin)}/{len(out)}"
           + (f" (ohne: {', '.join(no_skin[:8])})" if no_skin else ""))
     direct = sum(1 for i in out.values() if i["obtainable_directly"])

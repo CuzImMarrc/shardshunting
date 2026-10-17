@@ -5,7 +5,7 @@
 
 /* Bei jedem Update hochzaehlen (dieselbe Zahl wie in index.html), damit
    Browser und GitHub Pages keine alten Dateien aus dem Cache nehmen. */
-const VERSION = "20261017b";
+const VERSION = "20261017c";
 
 const RARITIES = ["Common", "Uncommon", "Rare", "Epic", "Legendary"];
 
@@ -140,9 +140,14 @@ function buildRows(member) {
   const rows = [];
   let unlocked = 0, maxed = 0, toMax = 0;
 
+  let total = 0;
   for (const [id, info] of Object.entries(state.db)) {
-    const count = syphoned.has(id) ? syphoned.get(id) : null;
+    // Manche Shards kann man gar nicht syphonen (Chameleon) - die sind reines
+    // Fusionsmaterial und zaehlen in keiner Syphon-Statistik mit.
+    const fusionOnly = info.syphonable === false;
+    const count = !fusionOnly && syphoned.has(id) ? syphoned.get(id) : null;
     const lv = levelOf(count || 0, info.rarity);
+    if (!fusionOnly) total++;
     if (count !== null) {
       unlocked++;
       toMax += lv.remaining;
@@ -151,13 +156,14 @@ function buildRows(member) {
     const box = inBox.get(id) || 0;
     // Was bringt es, die Box-Shards dieser Sorte zu syphonen? Nur so viele,
     // wie bis Level 10 noch fehlen - der Rest ist nur noch Fusionsmaterial.
-    const usable = Math.min(box, lv.remaining);
+    const usable = fusionOnly ? 0 : Math.min(box, lv.remaining);
     const after = usable ? levelOf((count || 0) + usable, info.rarity).level : lv.level;
     rows.push({
       id, info,
       count,
       box,
       unlocked: count !== null,
+      fusionOnly,
       usable,
       levelAfter: after,
       ...lv,
@@ -167,13 +173,14 @@ function buildRows(member) {
   state.rowById = new Map(rows.map((r) => [r.id, r]));
 
   state.totals = {
-    total: rows.length,
+    total,
+    all: rows.length,
     unlocked,
     maxed,
     inProgress: unlocked - maxed,
-    missing: rows.length - unlocked,
+    missing: total - unlocked,
     toMax,
-    readyToSyphon: rows.filter((r) => !r.unlocked && r.box > 0).length,
+    readyToSyphon: rows.filter((r) => !r.unlocked && !r.fusionOnly && r.box > 0).length,
     boxTypes: rows.filter((r) => r.box > 0).length,
     syphonable: rows.filter((r) => r.usable > 0).length,
     syphonUnlocks: rows.filter((r) => r.usable > 0 && !r.unlocked).length,
@@ -231,11 +238,11 @@ function renderSummary(profile) {
         : `, ${t.syphonUnlocks} davon ${t.syphonUnlocks === 1 ? "schaltet ein neues Attribut" : "schalten neue Attribute"} frei`;
       parts.push(`<b>${t.syphonable}</b> davon kannst du noch syphonen (+${t.syphonLevels} Level${unlock})`
         + ` &middot; <button type="button" class="linkish" data-goto="syphon">anzeigen</button>`);
+      if (t.boxMaxedOnly) {
+        parts.push(`<span class="dim">${t.boxMaxedOnly === 1 ? "Eine ist" : `Die anderen ${t.boxMaxedOnly} sind`} nur noch Fusionsmaterial (gemaxt oder nicht syphonbar)</span>`);
+      }
     } else {
-      parts.push("Syphonen bringt dir gerade bei keiner davon noch Level");
-    }
-    if (t.boxMaxedOnly) {
-      parts.push(`<span class="dim">${t.boxMaxedOnly} ${t.boxMaxedOnly === 1 ? "ist" : "sind"} schon gemaxt und nur noch Fusionsmaterial</span>`);
+      parts.push(`<span class="dim">${t.boxTypes === 1 ? "Sie ist" : "Alle sind"} nur noch Fusionsmaterial (gemaxt oder nicht syphonbar)</span>`);
     }
     ready.innerHTML = `In deiner Hunting Box liegen ${t.boxTypes} Shard-Sorten. ` + parts.join(". ") + ".";
   }
@@ -254,7 +261,7 @@ function renderTabs() {
     ["progress", "Angefangen", t.inProgress],
     ["missing", "Nie syphont", t.missing],
     ["maxed", "Fertig", t.maxed],
-    ["all", "Alle", t.total],
+    ["all", "Alle", t.all],
   ];
   $("tabs").innerHTML = defs.map(([key, label, n]) =>
     `<button class="tab" role="tab" data-view="${key}" aria-selected="${state.view === key}">${label}<b>${n}</b></button>`
@@ -309,9 +316,9 @@ function islotHTML(row) {
     : "";
   const box = row.box > 0 ? `<span class="inbox${row.usable ? "" : " spent"}"></span>` : "";
   const label = `${i.name} Shard, ${i.rarity}, `
-    + (row.unlocked ? `Level ${row.level} von 10` : "noch nie syphont")
+    + (row.fusionOnly ? "nur fuers Fusen" : row.unlocked ? `Level ${row.level} von 10` : "noch nie syphont")
     + (row.box ? `, ${row.box} in der Box` : "");
-  return `<button type="button" class="islot${row.unlocked ? "" : " is-missing"}" data-id="${esc(row.id)}" aria-label="${esc(label)}">`
+  return `<button type="button" class="islot${row.unlocked || row.fusionOnly ? "" : " is-missing"}" data-id="${esc(row.id)}" aria-label="${esc(label)}">`
     + headHTML(i) + box + bar + cnt + `</button>`;
 }
 
@@ -323,7 +330,9 @@ function tipHTML(row) {
     `<p class="tt-attr">${esc(i.attribute || "")}${row.level ? " " + ROMAN[row.level] : ""}</p>`,
     `<p class="tt-eff">${esc(i.effect || "")}</p>`,
   ];
-  if (row.unlocked) {
+  if (row.fusionOnly) {
+    lines.push('<p class="tt-lv">Kann nicht syphont werden &mdash; nur fuers Fusen</p>');
+  } else if (row.unlocked) {
     lines.push(`<p class="tt-lv">Level ${row.level}/10 &middot; ${row.count}/${row.max} Shards${
       row.remaining ? ` &middot; noch ${row.remaining}` : " &middot; gemaxt"}</p>`);
   } else {
@@ -338,6 +347,7 @@ function tipHTML(row) {
     } else if (row.unlocked) {
       lines.push('<p class="tt-eff">Schon gemaxt &mdash; nur noch fuer Fusionen</p>');
     }
+    // bei Fusions-Shards steht der Hinweis schon oben
   }
   if ((row.ready || []).length) {
     const [a, b] = row.ready[0];
@@ -358,7 +368,9 @@ function cardHTML(row) {
   const pips = Array.from({ length: 10 }, (_, n) =>
     `<span class="pip${n < row.level ? " on" : ""}"></span>`).join("");
 
-  const levelBlock = row.unlocked
+  const levelBlock = row.fusionOnly
+    ? '<p class="level-num" style="margin-top:.8rem">Kann nicht syphont werden &mdash; nur fuers Fusen</p>'
+    : row.unlocked
     ? `<div class="level ${rc}">
          <span class="pips">${pips}</span>
          <span class="roman">${ROMAN[row.level] || "-"}</span>
@@ -421,6 +433,7 @@ function visibleRows() {
   const sort = $("fSort").value;
 
   let rows = state.rows.filter((r) => {
+    if (r.fusionOnly && !["all", "fusable"].includes(state.view)) return false;
     if (state.view === "syphon" && !(r.usable > 0)) return false;
     if (state.view === "fusable" && !(r.ready || []).length) return false;
     if (state.view === "progress" && !(r.unlocked && r.remaining > 0)) return false;
@@ -708,7 +721,9 @@ function openDetail(id) {
   const onlyOwned = state.detailOwnedOnly;
   const direct = i.direct_methods || [];
 
-  const status = row.unlocked
+  const status = row.fusionOnly
+    ? "Kann nicht syphont werden &mdash; nur fuers Fusen"
+    : row.unlocked
     ? `Level ${ROMAN[row.level]} &middot; ${row.count}/${row.max} Shards${row.remaining ? ` &middot; noch ${row.remaining}` : " &middot; fertig"}`
     : "Noch nie syphont";
 
@@ -788,7 +803,7 @@ function downloadCSV() {
       i.name + " Shard", i.rarity, i.category, i.type || "", (i.family || []).join(", "),
       i.attribute || "",
       r.unlocked ? r.level : "", r.unlocked ? r.count : "", r.max,
-      r.unlocked ? r.remaining : r.max, r.box,
+      r.fusionOnly ? "" : r.unlocked ? r.remaining : r.max, r.box,
       direct.length ? "Ja" : "Nein - nur Fusion",
       direct.join(" | "),
       (i.fusion_rules || []).join(" | "),
