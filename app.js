@@ -3,6 +3,10 @@
 
 "use strict";
 
+/* Bei jedem Update hochzaehlen (dieselbe Zahl wie in index.html), damit
+   Browser und GitHub Pages keine alten Dateien aus dem Cache nehmen. */
+const VERSION = "20261017";
+
 const RARITIES = ["Common", "Uncommon", "Rare", "Epic", "Legendary"];
 
 /* Shards pro Stufe (1..10) je Rarity. Summe = Shards bis Level 10. */
@@ -551,7 +555,7 @@ async function loadRecipes() {
   if (state.recipes || state.recipesTried) return;
   state.recipesTried = true;
   try {
-    state.recipes = await getJSON("recipes.json");
+    state.recipes = await getJSON("recipes.json?v=" + VERSION);
   } catch {
     state.recipes = {};
   }
@@ -909,7 +913,7 @@ function explain(err) {
 
 (async function init() {
   try {
-    state.db = await getJSON("shards.json");
+    state.db = await getJSON("shards.json?v=" + VERSION);
   } catch {
     say("shards.json laesst sich nicht laden. Liegt die Datei neben der index.html?", "err");
     return;
