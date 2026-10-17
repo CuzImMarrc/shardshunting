@@ -5,7 +5,7 @@
 
 /* Bei jedem Update hochzaehlen (dieselbe Zahl wie in index.html), damit
    Browser und GitHub Pages keine alten Dateien aus dem Cache nehmen. */
-const VERSION = "20261017";
+const VERSION = "20261017b";
 
 const RARITIES = ["Common", "Uncommon", "Rare", "Epic", "Legendary"];
 
@@ -148,11 +148,18 @@ function buildRows(member) {
       toMax += lv.remaining;
       if (lv.remaining === 0) maxed++;
     }
+    const box = inBox.get(id) || 0;
+    // Was bringt es, die Box-Shards dieser Sorte zu syphonen? Nur so viele,
+    // wie bis Level 10 noch fehlen - der Rest ist nur noch Fusionsmaterial.
+    const usable = Math.min(box, lv.remaining);
+    const after = usable ? levelOf((count || 0) + usable, info.rarity).level : lv.level;
     rows.push({
       id, info,
       count,
-      box: inBox.get(id) || 0,
+      box,
       unlocked: count !== null,
+      usable,
+      levelAfter: after,
       ...lv,
     });
   }
@@ -167,6 +174,11 @@ function buildRows(member) {
     missing: rows.length - unlocked,
     toMax,
     readyToSyphon: rows.filter((r) => !r.unlocked && r.box > 0).length,
+    boxTypes: rows.filter((r) => r.box > 0).length,
+    syphonable: rows.filter((r) => r.usable > 0).length,
+    syphonUnlocks: rows.filter((r) => r.usable > 0 && !r.unlocked).length,
+    syphonLevels: rows.reduce((s, r) => s + (r.usable ? r.levelAfter - r.level : 0), 0),
+    boxMaxedOnly: rows.filter((r) => r.box > 0 && r.usable === 0).length,
   };
   return rows;
 }
@@ -210,11 +222,22 @@ function renderSummary(profile) {
   }
 
   const ready = $("ready");
-  ready.hidden = t.readyToSyphon === 0;
-  if (t.readyToSyphon) {
-    ready.textContent = t.readyToSyphon === 1
-      ? "1 Shard liegt in deiner Hunting Box und ist noch nicht syphont."
-      : `${t.readyToSyphon} Shards liegen in deiner Hunting Box und sind noch nicht syphont.`;
+  ready.hidden = t.boxTypes === 0;
+  if (t.boxTypes) {
+    const parts = [];
+    if (t.syphonable) {
+      const unlock = !t.syphonUnlocks ? ""
+        : t.syphonable === 1 ? ", schaltet ein neues Attribut frei"
+        : `, ${t.syphonUnlocks} davon ${t.syphonUnlocks === 1 ? "schaltet ein neues Attribut" : "schalten neue Attribute"} frei`;
+      parts.push(`<b>${t.syphonable}</b> davon kannst du noch syphonen (+${t.syphonLevels} Level${unlock})`
+        + ` &middot; <button type="button" class="linkish" data-goto="syphon">anzeigen</button>`);
+    } else {
+      parts.push("Syphonen bringt dir gerade bei keiner davon noch Level");
+    }
+    if (t.boxMaxedOnly) {
+      parts.push(`<span class="dim">${t.boxMaxedOnly} ${t.boxMaxedOnly === 1 ? "ist" : "sind"} schon gemaxt und nur noch Fusionsmaterial</span>`);
+    }
+    ready.innerHTML = `In deiner Hunting Box liegen ${t.boxTypes} Shard-Sorten. ` + parts.join(". ") + ".";
   }
 
   const pMax = (t.maxed / t.total) * 100;
@@ -226,6 +249,7 @@ function renderSummary(profile) {
 function renderTabs() {
   const t = state.totals;
   const defs = [
+    ["syphon", "Syphonbar", t.syphonable],
     ["fusable", "Jetzt fusebar", state.recipes ? (t.fusable || 0) : "\u2026"],
     ["progress", "Angefangen", t.inProgress],
     ["missing", "Nie syphont", t.missing],
@@ -283,7 +307,7 @@ function islotHTML(row) {
   const bar = row.unlocked && row.remaining > 0
     ? `<span class="dura"><i style="width:${Math.max(1, Math.round(p * 13)) / 13 * 100}%;background:hsl(${Math.round(p * 120)},100%,50%)"></i></span>`
     : "";
-  const box = row.box > 0 ? '<span class="inbox"></span>' : "";
+  const box = row.box > 0 ? `<span class="inbox${row.usable ? "" : " spent"}"></span>` : "";
   const label = `${i.name} Shard, ${i.rarity}, `
     + (row.unlocked ? `Level ${row.level} von 10` : "noch nie syphont")
     + (row.box ? `, ${row.box} in der Box` : "");
@@ -305,7 +329,16 @@ function tipHTML(row) {
   } else {
     lines.push('<p class="tt-miss">Noch nie syphont</p>');
   }
-  if (row.box) lines.push(`<p class="tt-box">${row.box}x in deiner Hunting Box</p>`);
+  if (row.box) {
+    lines.push(`<p class="tt-box">${row.box}x in deiner Hunting Box</p>`);
+    if (row.usable && row.levelAfter > row.level) {
+      lines.push(`<p class="tt-box">Syphonen bringt dich auf Level ${row.levelAfter}</p>`);
+    } else if (row.usable) {
+      lines.push(`<p class="tt-box">Syphonen bringt ${row.usable} Shards Fortschritt</p>`);
+    } else if (row.unlocked) {
+      lines.push('<p class="tt-eff">Schon gemaxt &mdash; nur noch fuer Fusionen</p>');
+    }
+  }
   if ((row.ready || []).length) {
     const [a, b] = row.ready[0];
     lines.push(`<p class="tt-fuse">Jetzt fusebar: ${esc(a.info.name)} &times;${need(a)} + ${esc(b.info.name)} &times;${need(b)}</p>`);
@@ -354,7 +387,10 @@ function cardHTML(row) {
     : "";
 
   const tags = [];
-  if (row.box > 0) tags.push(`<span class="tag box">${row.box}x in der Box</span>`);
+  if (row.box > 0) {
+    const gain = row.usable && row.levelAfter > row.level ? ` &rarr; Lvl ${row.levelAfter}` : "";
+    tags.push(`<span class="tag box${row.usable ? "" : " spent"}">${row.box}x in der Box${gain}</span>`);
+  }
   if (!direct.length) tags.push('<span class="tag fusion-only">nur Fusion</span>');
   tags.push(`<span class="tag">${esc(i.category)}</span>`);
   if (i.type) tags.push(`<span class="tag">${esc(i.type)}</span>`);
@@ -385,6 +421,7 @@ function visibleRows() {
   const sort = $("fSort").value;
 
   let rows = state.rows.filter((r) => {
+    if (state.view === "syphon" && !(r.usable > 0)) return false;
     if (state.view === "fusable" && !(r.ready || []).length) return false;
     if (state.view === "progress" && !(r.unlocked && r.remaining > 0)) return false;
     if (state.view === "missing" && r.unlocked) return false;
@@ -413,6 +450,9 @@ function visibleRows() {
   else if (sort === "rarity") rows.sort((a, b) =>
     RARITIES.indexOf(a.info.rarity) - RARITIES.indexOf(b.info.rarity) || byName(a, b));
   else if (sort === "remaining") rows.sort((a, b) => a.remaining - b.remaining || byName(a, b));
+  else if (state.view === "syphon") rows.sort((a, b) =>
+    a.unlocked - b.unlocked ||
+    (b.levelAfter - b.level) - (a.levelAfter - a.level) || byName(a, b));
   else if (state.view === "fusable") rows.sort((a, b) =>
     a.unlocked - b.unlocked || a.level - b.level ||
     RARITIES.indexOf(b.info.rarity) - RARITIES.indexOf(a.info.rarity) || byName(a, b));
@@ -965,6 +1005,15 @@ function explain(err) {
   $("lookup").addEventListener("submit", lookup);
   $("csv").addEventListener("click", downloadCSV);
   $("profileSelect").addEventListener("change", (e) => showProfile(Number(e.target.value)));
+
+  $("ready").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-goto]");
+    if (!b) return;
+    state.view = b.dataset.goto;
+    renderTabs();
+    renderGrid();
+    $("tabs").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 
   $("tabs").addEventListener("click", (e) => {
     const btn = e.target.closest(".tab");

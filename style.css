@@ -251,6 +251,7 @@ a:hover { color: var(--text-bright); }
   box-shadow: 0 0 0 1px #1d4d1d;
   pointer-events: none;
 }
+.islot .inbox.spent { background: #d8d8d8; box-shadow: 0 0 0 1px #5a5a5a; }
 /* Noch nie syphont: grau und blass, wie ein Platzhalter */
 .islot.is-missing .head { filter: grayscale(1) brightness(.78) opacity(.55); }
 .islot.is-missing:hover .head { filter: grayscale(.4) opacity(.85); }
@@ -446,7 +447,20 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .meter .m-max  { background: var(--legendary); }
 .meter .m-part { background: var(--edge-lit); }
 
-.ready { margin: .85rem 0 0; font-size: .85rem; color: var(--good); }
+.ready { margin: .85rem 0 0; font-size: .88rem; color: var(--text); }
+.ready b { color: var(--good); font-weight: 600; }
+.ready .dim { color: var(--text-dim); }
+.linkish {
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--good);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.linkish:hover { color: #b6ffb6; }
 .warn  { margin: .6rem 0 0; font-size: .85rem; color: var(--warn); }
 
 /* ---------- Filter ---------- */
@@ -517,7 +531,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   margin-left: .4rem;
   color: #555555;
 }
-.tab[data-view="fusable"] b { color: #1e7a1e; }
+.tab[data-view="fusable"] b, .tab[data-view="syphon"] b { color: #1e7a1e; }
 
 /* ---------- Das grosse Menue ---------- */
 
@@ -598,6 +612,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   background: linear-gradient(90deg, #a6ff00 0 62%, #000 62%) top / 100% 3px no-repeat, #000;
 }
 .lg-box { width: 9px; height: 9px; background: var(--good); box-shadow: 0 0 0 1px #1d4d1d; }
+.lg-spent { width: 9px; height: 9px; background: #d8d8d8; box-shadow: 0 0 0 1px #5a5a5a; }
 .lg-gray { width: 14px; height: 14px; background: #9b9b9b; opacity: .6; }
 
 .box.is-cards .legend { display: none; }
@@ -715,6 +730,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   color: var(--text-dim);
 }
 .tag.box { border-color: #3d6b3f; color: var(--good); }
+.tag.box.spent { border-color: var(--edge); color: var(--text-dim); }
 .tag.fusion-only { border-color: #6b3a3a; color: var(--warn); }
 button.tag { font-family: inherit; background: none; cursor: pointer; line-height: inherit; }
 button.tag:hover, button.tag[aria-pressed="true"] { border-color: var(--edge-lit); color: var(--text-bright); }
