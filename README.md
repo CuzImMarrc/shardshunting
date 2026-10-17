@@ -10,7 +10,7 @@ seinen eigenen Hypixel-API-Key; der bleibt im Browser und geht ausschließlich a
 
 1. Neues öffentliches Repository anlegen.
 2. Diese Dateien ins Repo-Root laden: `index.html`, `style.css`, `app.js`, `shards.json`,
-   `recipes.json`.
+   `recipes.json` und den Ordner `icons/`.
 3. **Settings → Pages → Source: Deploy from a branch**, Branch `main`, Ordner `/ (root)`, speichern.
 4. Nach ein paar Minuten liegt die Seite unter `https://<dein-name>.github.io/<repo>/`.
 
@@ -51,10 +51,19 @@ NEU-Item-Dateien (`items/ATTRIBUTE_SHARD_*.json`) die Kopf-Textur und speichert 
 `https://textures.minecraft.net/texture/<skin>` und baut daraus mit CSS einen 3D-Würfel wie im
 Inventar (Oberseite, Gesicht, Seite, plus Hut-Layer). Als CSS-Hintergrund braucht das kein CORS.
 
-Ein paar Shards sind im Spiel keine Köpfe, sondern Block-Items (z.B. Sea Lantern, Packed Ice,
-Sonnenblume) — die zeigen einen Kristall in Rarity-Farbe. Dasselbe passiert für alle Shards, wenn
-`textures.minecraft.net` nicht erreichbar ist (Firmennetz, Adblocker): Die Seite prüft das beim
-Laden einmal und schaltet dann komplett auf Kristalle um.
+Sieben Shards sind im Spiel keine Spielerköpfe mit eigener Textur, sondern Vanilla-Mobköpfe oder
+Blöcke. Für die gilt:
+
+- **Lapis Zombie, Miner Zombie, Zombie Soldier, Wither**: Hypixels eigener Kopf des gleichnamigen
+  Mobs aus dem Bestiary (`constants/bestiary.json` im NEU-Repo; beim Wither-Shard der Wither
+  Skeleton).
+- **Glacite Walker, Obsidian Defender, Flora**: Dafür gibt es nirgends eine Kopf-Textur, auch
+  Hypixels Bestiary zeigt hier Packed Ice bzw. Obsidian. Diese drei kommen als eigene Pixel-Icons
+  aus dem Ordner `icons/` (zwei Block-Texturen als Würfel, die Sonnenblume flach). Die Zuordnung
+  steht in `build_data.py` unter `LOCAL_ICONS`.
+
+Ist `textures.minecraft.net` nicht erreichbar (Firmennetz, Adblocker), prüft die Seite das beim
+Laden einmal und zeigt statt der Köpfe Kristalle in Rarity-Farbe.
 
 ## Ansichten
 

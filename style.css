@@ -149,8 +149,21 @@ a:hover { color: var(--text-bright); }
   filter: drop-shadow(0 2px 0 rgba(0,0,0,.35));
 }
 .head:not(.no-skin) > .shard-mark { display: none; }
-.no-skins .head > .shard-mark { display: block; }
-.no-skins .cube { display: none; }
+.no-skins .head:not(.local) > .shard-mark { display: block; }
+.no-skins .head:not(.local) .cube { display: none; }
+
+/* Bloecke: gleicher Wuerfel, eigene Textur (Hut-Layer bleibt leer) */
+.head.block .cube .fr { filter: brightness(.8); }
+.head.block .cube .sd { filter: brightness(.6); }
+
+/* Flache Items wie die Sonnenblume */
+.head.sprite {
+  background: var(--skin) center / 86% auto no-repeat;
+  image-rendering: pixelated;
+}
+.face.sprite {
+  background: var(--skin) center / contain no-repeat;
+}
 .face.no-skin, .no-skins .face {
   background: currentColor;
   clip-path: polygon(50% 0, 100% 32%, 78% 100%, 22% 100%, 0 32%);

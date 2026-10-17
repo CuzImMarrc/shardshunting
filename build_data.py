@@ -64,6 +64,43 @@ def skin_hash(internal_name):
     return h.group(1) if h else None
 
 
+# Shards, die im Spiel kein Spielerkopf sind (Vanilla-Mobkopf oder Block).
+# 1) Gibt es den gleichnamigen Mob im Bestiary, nehmen wir Hypixels Kopf dafuer.
+BESTIARY_ALIAS = {"Wither": "Wither Skeleton"}
+# 2) Sonst ein eigenes Pixel-Icon aus dem Ordner icons/ (Block = Wuerfel, Sprite = flach).
+LOCAL_ICONS = {
+    "Glacite Walker":    ("icons/packed_ice.png", "block"),
+    "Obsidian Defender": ("icons/obsidian.png",   "block"),
+    "Flora":             ("icons/sunflower.png",  "sprite"),
+}
+
+
+def bestiary_heads(bestiary):
+    """Mobname -> Textur-Hash aus NEUs bestiary.json."""
+    heads = {}
+
+    def walk(node):
+        if isinstance(node, dict):
+            name = re.sub(r"\u00a7.", "", str(node.get("name", "")))
+            raw = node.get("texture")
+            if name and isinstance(raw, str):
+                try:
+                    dec = base64.b64decode(raw + "=" * (-len(raw) % 4)).decode("utf-8", "replace")
+                    h = TEXTURE_HASH.search(dec)
+                    if h:
+                        heads.setdefault(name, h.group(1))
+                except Exception:
+                    pass
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v)
+
+    walk(bestiary)
+    return heads
+
+
 def flatten(nodes):
     """Minecraft-Textbausteine ({t:..}, {range:[a,b]}) zu Klartext."""
     out = []
@@ -118,6 +155,8 @@ def main():
     with ThreadPoolExecutor(max_workers=12) as pool:
         sids = list(internal_by_sid)
         skins = dict(zip(sids, pool.map(lambda s: skin_hash(internal_by_sid[s]), sids)))
+    print("Lade Bestiary (Ersatz-Koepfe) ...")
+    mob_heads = bestiary_heads(fetch_json(f"{NEU}/constants/bestiary.json"))
 
     fd_shards = fusion["shards"]
     recipes = fusion.get("recipes", {})
@@ -144,6 +183,7 @@ def main():
             "effect": " ".join(flatten(d.get("description")).split()),
             "rarity": (p.get("rarity") or fd.get("rarity") or "").capitalize(),
             "skin": skins.get(sid),                  # textures.minecraft.net/texture/<skin>
+            "skin_source": "item" if skins.get(sid) else None,
             "syphonable": fd.get("internal_id") not in fusion_only,
             "category": p.get("category"),           # Forest / Water / Combat
             "type": fd.get("type"),                  # Bereich: Foraging, Fishing, ...
@@ -157,6 +197,17 @@ def main():
             "fuse_inputs": [p.get("input1") or "", p.get("input2") or ""],
             "fusion_examples": [],
         }
+
+    # Ersatz fuer Shards ohne eigenen Kopf
+    for info in base.values():
+        if info["skin"]:
+            continue
+        mob = BESTIARY_ALIAS.get(info["name"], info["name"])
+        if mob in mob_heads:
+            info["skin"] = mob_heads[mob]
+            info["skin_source"] = "bestiary"
+        elif info["name"] in LOCAL_ICONS:
+            info["icon"], info["icon_kind"] = LOCAL_ICONS[info["name"]]
 
     # Konkrete Fusions-Rezepte: die praktischsten zuerst
     # (Zutaten die man selbst jagen kann > alles andere, dann niedrige Rarity)
@@ -222,7 +273,11 @@ def main():
         json.dump(combos, f, separators=(",", ":"))
 
     renamed = sum(1 for i in out.values() if i["attribute_aliases"])
-    no_skin = [i["name"] for i in out.values() if not i["skin"]]
+    no_skin = [i["name"] for i in out.values() if not i["skin"] and not i.get("icon")]
+    from_best = [i["name"] for i in out.values() if i.get("skin_source") == "bestiary"]
+    local = [i["name"] for i in out.values() if i.get("icon")]
+    print("Kopf aus dem Bestiary:", ", ".join(from_best) or "-")
+    print("Eigenes Icon:", ", ".join(local) or "-")
     print("Nicht syphonbar:", ", ".join(i["name"] for i in out.values() if not i["syphonable"]) or "-")
     print(f"Koepfe: {len(out) - len(no_skin)}/{len(out)}"
           + (f" (ohne: {', '.join(no_skin[:8])})" if no_skin else ""))

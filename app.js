@@ -5,7 +5,7 @@
 
 /* Bei jedem Update hochzaehlen (dieselbe Zahl wie in index.html), damit
    Browser und GitHub Pages keine alten Dateien aus dem Cache nehmen. */
-const VERSION = "20261017c";
+const VERSION = "20261017d";
 
 const RARITIES = ["Common", "Uncommon", "Rare", "Epic", "Legendary"];
 
@@ -278,9 +278,14 @@ function esc(s) {
 /* Die Textur kommt direkt von Mojangs Texturserver. Als CSS-Hintergrund
    braucht das kein CORS, und der Browser cached jedes Bild nur einmal. */
 function skinUrl(info) {
-  return info && info.skin && /^[0-9a-f]+$/.test(info.skin)
-    ? `https://textures.minecraft.net/texture/${info.skin}`
-    : null;
+  if (info && info.skin && /^[0-9a-f]+$/.test(info.skin)) {
+    return `https://textures.minecraft.net/texture/${info.skin}`;
+  }
+  // Eigene Icons aus icons/ fuer Shards, die im Spiel Bloecke sind
+  if (info && info.icon && /^icons\/[\w.-]+\.png$/.test(info.icon)) {
+    return `${info.icon}?v=${VERSION}`;
+  }
+  return null;
 }
 
 /* 3D-Kopf wie im Inventar. Shards ohne Kopf (Sea Lantern, Packed Ice ...)
@@ -291,7 +296,11 @@ function headHTML(info, extra = "") {
   if (!url) {
     return `<span class="head no-skin ${rc} ${extra}"><span class="shard-mark"></span></span>`;
   }
-  return `<span class="head ${rc} ${extra}" style="--skin:url(${url})"><span class="cube">`
+  if (info.icon_kind === "sprite") {
+    return `<span class="head local sprite ${rc} ${extra}" style="--skin:url(${url})"></span>`;
+  }
+  const kind = info.icon_kind === "block" ? " local block" : "";
+  return `<span class="head${kind} ${rc} ${extra}" style="--skin:url(${url})"><span class="cube">`
     + `<i class="t"></i><i class="fr"></i><i class="sd"></i>`
     + `<i class="h t"></i><i class="h fr"></i><i class="h sd"></i>`
     + `</span><span class="shard-mark"></span></span>`;
@@ -300,6 +309,9 @@ function headHTML(info, extra = "") {
 /* Flaches Gesicht fuer Listen */
 function faceHTML(info) {
   const url = skinUrl(info);
+  if (url && info.icon_kind === "sprite") {
+    return `<span class="face sprite" style="--skin:url(${url})" aria-hidden="true"></span>`;
+  }
   return url
     ? `<span class="face" style="--skin:url(${url})" aria-hidden="true"></span>`
     : `<span class="face no-skin r-${info.rarity}" aria-hidden="true"></span>`;
@@ -867,7 +879,7 @@ function fillShowcase() {
 /* Ist textures.minecraft.net erreichbar? Wenn nicht (Firmennetz, Adblocker),
    zeigen alle Koepfe den Kristall statt leerer Slots. */
 function probeSkins() {
-  const first = Object.values(state.db).find((i) => skinUrl(i));
+  const first = Object.values(state.db).find((i) => i.skin && skinUrl(i));
   if (!first) return;
   const img = new Image();
   img.onerror = () => document.documentElement.classList.add("no-skins");
