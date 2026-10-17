@@ -39,8 +39,32 @@ python3 build_data.py
 ```
 
 Das Skript zieht die Daten aus dem offenen
-[SkyShards-Datensatz](https://github.com/Campionnn/SkyShards) und schreibt `shards.json` neu.
-Sonst muss nichts angefasst werden.
+[SkyShards-Datensatz](https://github.com/Campionnn/SkyShards) und dem
+[NEU-Repo](https://github.com/NotEnoughUpdates/NotEnoughUpdates-REPO) und schreibt `shards.json`
+und `recipes.json` neu. Sonst muss nichts angefasst werden.
+
+## Köpfe
+
+Jeder Shard wird im Spiel als Spielerkopf dargestellt. `build_data.py` liest dafür aus den
+NEU-Item-Dateien (`items/ATTRIBUTE_SHARD_*.json`) die Kopf-Textur und speichert ihren Hash als
+`skin` in `shards.json`. Die Seite lädt das Bild dann direkt von
+`https://textures.minecraft.net/texture/<skin>` und baut daraus mit CSS einen 3D-Würfel wie im
+Inventar (Oberseite, Gesicht, Seite, plus Hut-Layer). Als CSS-Hintergrund braucht das kein CORS.
+
+Ein paar Shards sind im Spiel keine Köpfe, sondern Block-Items (z.B. Sea Lantern, Packed Ice,
+Sonnenblume) — die zeigen einen Kristall in Rarity-Farbe. Dasselbe passiert für alle Shards, wenn
+`textures.minecraft.net` nicht erreichbar ist (Firmennetz, Adblocker): Die Seite prüft das beim
+Laden einmal und schaltet dann komplett auf Kristalle um.
+
+## Ansichten
+
+- **Box** (Standard): Raster aus Inventar-Slots, gruppiert nach Forest / Water / Combat.
+  Die Zahl im Slot ist das Level, der Balken darunter der Fortschritt bis Level 10 (wie die
+  Haltbarkeit eines Werkzeugs), gold = gemaxt, grüner Punkt = liegt in der Hunting Box,
+  grau = noch nie syphont. Beim Drüberfahren erscheint ein Tooltip wie im Spiel.
+- **Karten**: die ausführliche Ansicht mit Beschaffung und Kombis direkt auf der Karte.
+
+Die gewählte Ansicht merkt sich der Browser.
 
 ## Fusions-Ansicht
 
@@ -49,15 +73,15 @@ sie für Slot 1 und Slot 2 alle Shards auf, die dort tatsächlich hineinpassen �
 davon schon in der eigenen Hunting Box liegt. Ein Klick auf einen Kandidaten springt zu dessen
 Details, so lässt sich eine Fusionskette rückwärts verfolgen.
 
-Nur 98 der 321 Shards haben eine solche allgemeine Regel. Die übrigen entstehen aus festen
+Nur rund 100 der 325 Shards haben eine solche allgemeine Regel. Die übrigen entstehen aus festen
 Kombinationen — die stehen in `recipes.json` und werden erst beim ersten Klick auf eine Karte
 nachgeladen (~165 KB gzip). Für diese Shards zeigt die Detailansicht statt der Slots die komplette
 Kombiliste, mit Filter auf das, was man sofort fusen kann.
 
 Die Regeln stehen maschinenlesbar in `shards.json` unter `fuse_inputs`, z.B.
 `["Forest&Legendary", "Elemental&Epic+"]`. Die Syntax: `&` = und, `|` = oder, `X+` = X oder höher,
-`Name Shard` = genau dieser Shard, `Mining Shards` = Attribut-Bereich Mining. Ausgewertet wird das
-in `app.js` in `matchesRule()`.
+`Name Shard` = genau dieser Shard, `Mining` oder `Mining Shards` = Attribut-Bereich Mining (die
+Quelle schreibt das mal so, mal so). Ausgewertet wird das in `app.js` in `matchesRule()`.
 
 ## „Jetzt fusebar"
 
@@ -65,6 +89,18 @@ Der erste Tab zeigt alle Shards, die sich mit dem aktuellen Inhalt der Hunting B
 lassen. Pro Zutat wird deren `fuse_amount` verbraucht (2 oder 5 Stück, steht in `shards.json`);
 zweimal derselbe Shard braucht entsprechend die doppelte Menge. Der Tab lädt `recipes.json` im
 Hintergrund und zeigt so lange `…` als Zahl.
+
+## Attribut-IDs
+
+Die Hypixel-API schlüsselt `attributes.stacks` nach der **internen** Attribut-ID, nicht nach dem
+Anzeigenamen. Bei umbenannten Attributen fällt das auseinander: Drowned zeigt „Undead Fortune",
+heißt intern aber `humanoid_ruler` — und `humanoid_ruler` war früher Wetwing. `build_data.py` zieht
+die echte ID deshalb aus dem NEU-Repo (`internalName`) und legt den alten Namens-Slug als
+`attribute_aliases` daneben. Beim Aufbau der Zuordnung werden erst die Aliase eingetragen und dann
+die echten IDs darübergelegt, damit bei solchen Überschneidungen die aktuelle Bedeutung gewinnt.
+
+Attribute, die zu keinem Shard passen, werden nicht mehr stillschweigend verworfen, sondern über
+der Tab-Leiste angezeigt — so fallen künftige Umbenennungen sofort auf.
 
 ## Wie die Level berechnet werden
 

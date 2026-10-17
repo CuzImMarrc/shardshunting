@@ -7,36 +7,44 @@
 <meta name="description" content="Zeigt dir, welche Attribut-Shards dir fehlen, auf welchem Level sie stehen und wie du sie bekommst.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://textures.minecraft.net">
 <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="masthead">
-  <div class="wrap">
-    <p class="eyebrow">Hypixel SkyBlock</p>
-    <h1>Hunting<span class="h1-break"> </span>Box</h1>
-    <p class="lede">Welche Attribut-Shards dir noch fehlen, wie weit die anderen sind &mdash; und wo du sie herbekommst.</p>
+  <div class="wrap masthead-grid">
+    <div>
+      <p class="eyebrow">Hypixel SkyBlock</p>
+      <h1>Hunting<span class="h1-break"> </span>Box</h1>
+      <p class="lede">Welche Attribut-Shards dir noch fehlen, wie weit die anderen sind &mdash; und wo du sie herbekommst.</p>
 
-    <form id="lookup" class="lookup" autocomplete="off">
-      <div class="field">
-        <label for="username">Minecraft-Name</label>
-        <input id="username" name="username" type="text" placeholder="z.B. Technoblade" spellcheck="false" required>
-      </div>
-      <div class="field">
-        <label for="apikey">Dein Hypixel-API-Key</label>
-        <input id="apikey" name="apikey" type="password" placeholder="8 Bloecke, mit Bindestrichen" spellcheck="false" required>
-        <p class="hint">Holst du dir bei <a href="https://developer.hypixel.net/dashboard" target="_blank" rel="noopener">developer.hypixel.net</a>. Bleibt in deinem Browser.</p>
-      </div>
-      <button type="submit" class="go" id="go">Profil laden</button>
-    </form>
+      <form id="lookup" class="lookup" autocomplete="off">
+        <div class="field">
+          <label for="username">Minecraft-Name</label>
+          <input id="username" name="username" type="text" placeholder="z.B. Technoblade" spellcheck="false" required>
+        </div>
+        <div class="field">
+          <label for="apikey">Dein Hypixel-API-Key</label>
+          <input id="apikey" name="apikey" type="password" placeholder="8 Bloecke, mit Bindestrichen" spellcheck="false" required>
+          <p class="hint">Holst du dir bei <a href="https://developer.hypixel.net/dashboard" target="_blank" rel="noopener">developer.hypixel.net</a>. Bleibt in deinem Browser.</p>
+        </div>
+        <button type="submit" class="go" id="go">Profil laden</button>
+      </form>
 
-    <label class="remember">
-      <input type="checkbox" id="remember" checked>
-      <span>Key auf diesem Geraet merken</span>
-    </label>
+      <label class="remember">
+        <input type="checkbox" id="remember" checked>
+        <span>Key auf diesem Geraet merken</span>
+      </label>
 
-    <p class="status" id="status" role="status" aria-live="polite"></p>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="showcase gui" aria-hidden="true">
+      <p class="gui-label">Hunting Box</p>
+      <div class="showcase-slots" id="showcase"></div>
+    </div>
   </div>
 </header>
 
@@ -57,9 +65,8 @@
     <div class="stats" id="stats"></div>
     <div class="meter" id="meter" aria-hidden="true"></div>
     <p class="ready" id="ready" hidden></p>
+    <p class="warn" id="unknown" hidden></p>
   </section>
-
-  <nav class="tabs" id="tabs" role="tablist"></nav>
 
   <section class="controls">
     <input type="search" id="search" placeholder="Shard, Attribut oder Fundort suchen" aria-label="Suchen">
@@ -88,11 +95,30 @@
     </select>
   </section>
 
-  <p class="count" id="count"></p>
-  <div class="grid" id="grid"></div>
-  <p class="empty" id="empty" hidden>Nichts gefunden. Filter zuruecksetzen?</p>
+  <nav class="tabs" id="tabs" role="tablist"></nav>
+
+  <section class="gui box" id="box">
+    <div class="box-head">
+      <p class="gui-label" id="count"></p>
+      <div class="viewswitch" role="group" aria-label="Ansicht">
+        <button type="button" data-mode="box" aria-pressed="true">Box</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Karten</button>
+      </div>
+    </div>
+    <div id="grid"></div>
+    <p class="empty" id="empty" hidden>Nichts gefunden. Filter zuruecksetzen?</p>
+    <p class="legend" id="legend">
+      <span><b class="lg-num">7</b> Level</span>
+      <span><b class="lg-bar"></b> Fortschritt bis Level 10</span>
+      <span><b class="lg-max">10</b> gemaxt</span>
+      <span><b class="lg-box"></b> liegt in deiner Box</span>
+      <span><b class="lg-gray"></b> noch nie syphont</span>
+    </p>
+  </section>
 
 </main>
+
+<div class="tip" id="tip" hidden></div>
 
 <dialog id="detail" class="detail" aria-label="Shard-Details">
   <button type="button" class="detail-close" id="detailClose" aria-label="Schliessen">&times;</button>
@@ -100,8 +126,8 @@
 </dialog>
 
 <footer class="foot wrap">
-  <p>Shard-Daten aus dem offenen <a href="https://github.com/Campionnn/SkyShards" target="_blank" rel="noopener">SkyShards</a>-Datensatz, Profildaten direkt von der Hypixel-API. Kein Server dazwischen &mdash; die Seite laeuft komplett in deinem Browser.</p>
-  <p class="foot-meta"><span id="dbCount"></span> Shards in der Datenbank &middot; nicht mit Hypixel affiliiert</p>
+  <p>Shard-Daten aus dem offenen <a href="https://github.com/Campionnn/SkyShards" target="_blank" rel="noopener">SkyShards</a>-Datensatz, Koepfe und Attribut-IDs aus dem <a href="https://github.com/NotEnoughUpdates/NotEnoughUpdates-REPO" target="_blank" rel="noopener">NEU-Repo</a>, Profildaten direkt von der Hypixel-API. Kein Server dazwischen &mdash; die Seite laeuft komplett in deinem Browser.</p>
+  <p class="foot-meta"><span id="dbCount"></span> Shards in der Datenbank &middot; nicht mit Hypixel oder Mojang affiliiert</p>
 </footer>
 
 <script src="app.js"></script>

@@ -40,6 +40,8 @@ const state = {
   recipesTried: false,
   rowById: new Map(),
   shardIdIndex: new Map(),
+  mode: "box",       // "box" = Raster mit Koepfen, "cards" = Karten
+  tipId: null,
 };
 
 /* ---------- Rechnen ---------- */
@@ -112,11 +114,14 @@ function readMember(member) {
   const syphoned = new Map();   // api_id -> Anzahl syphont
   const inBox = new Map();      // api_id -> Anzahl in der Hunting Box
 
+  const unknown = [];
   const stacks = (member.attributes && member.attributes.stacks) || {};
   for (const [k, v] of Object.entries(stacks)) {
     const id = resolveShardId(k);
     if (id) syphoned.set(id, (syphoned.get(id) || 0) + (Number(v) || 0));
+    else if (Number(v) > 0) unknown.push(k);
   }
+  state.unknownAttrs = unknown;
 
   const owned = (member.shards && member.shards.owned) || [];
   for (const e of owned) {
@@ -189,6 +194,17 @@ function renderSummary(profile) {
     `<div class="stat ${cls}"><span class="stat-n">${value}</span><span class="stat-l">${label}</span></div>`
   ).join("");
 
+  const unknown = state.unknownAttrs || [];
+  const warn = $("unknown");
+  warn.hidden = unknown.length === 0;
+  if (unknown.length) {
+    const one = unknown.length === 1;
+    warn.textContent = `${unknown.length} Attribut${one ? "" : "e"} aus deinem Profil `
+      + `${one ? "passt" : "passen"} zu keinem bekannten Shard: ${unknown.slice(0, 6).join(", ")}`
+      + (unknown.length > 6 ? " u.a." : "")
+      + `. ${one ? "Es fehlt" : "Die fehlen"} in der Zaehlung - bitte melden.`;
+  }
+
   const ready = $("ready");
   ready.hidden = t.readyToSyphon === 0;
   if (t.readyToSyphon) {
@@ -220,6 +236,79 @@ function renderTabs() {
 function esc(s) {
   return String(s == null ? "" : s).replace(/[&<>"]/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
+/* ---------- Koepfe ---------- */
+
+/* Die Textur kommt direkt von Mojangs Texturserver. Als CSS-Hintergrund
+   braucht das kein CORS, und der Browser cached jedes Bild nur einmal. */
+function skinUrl(info) {
+  return info && info.skin && /^[0-9a-f]+$/.test(info.skin)
+    ? `https://textures.minecraft.net/texture/${info.skin}`
+    : null;
+}
+
+/* 3D-Kopf wie im Inventar. Shards ohne Kopf (Sea Lantern, Packed Ice ...)
+   bekommen den Kristall in Rarity-Farbe. */
+function headHTML(info, extra = "") {
+  const url = skinUrl(info);
+  const rc = "r-" + info.rarity;
+  if (!url) {
+    return `<span class="head no-skin ${rc} ${extra}"><span class="shard-mark"></span></span>`;
+  }
+  return `<span class="head ${rc} ${extra}" style="--skin:url(${url})"><span class="cube">`
+    + `<i class="t"></i><i class="fr"></i><i class="sd"></i>`
+    + `<i class="h t"></i><i class="h fr"></i><i class="h sd"></i>`
+    + `</span><span class="shard-mark"></span></span>`;
+}
+
+/* Flaches Gesicht fuer Listen */
+function faceHTML(info) {
+  const url = skinUrl(info);
+  return url
+    ? `<span class="face" style="--skin:url(${url})" aria-hidden="true"></span>`
+    : `<span class="face no-skin r-${info.rarity}" aria-hidden="true"></span>`;
+}
+
+/* Ein Inventar-Slot: Kopf, Level als Stack-Zahl, Haltbarkeitsbalken */
+function islotHTML(row) {
+  const i = row.info;
+  const p = row.unlocked ? Math.min(1, row.count / row.max) : 0;
+  const cnt = row.unlocked && row.level > 0
+    ? `<span class="cnt${row.remaining === 0 ? " max" : ""}">${row.level}</span>` : "";
+  const bar = row.unlocked && row.remaining > 0
+    ? `<span class="dura"><i style="width:${Math.max(1, Math.round(p * 13)) / 13 * 100}%;background:hsl(${Math.round(p * 120)},100%,50%)"></i></span>`
+    : "";
+  const box = row.box > 0 ? '<span class="inbox"></span>' : "";
+  const label = `${i.name} Shard, ${i.rarity}, `
+    + (row.unlocked ? `Level ${row.level} von 10` : "noch nie syphont")
+    + (row.box ? `, ${row.box} in der Box` : "");
+  return `<button type="button" class="islot${row.unlocked ? "" : " is-missing"}" data-id="${esc(row.id)}" aria-label="${esc(label)}">`
+    + headHTML(i) + box + bar + cnt + `</button>`;
+}
+
+/* Tooltip im Stil des Spiels, letzte Zeile wie die echte Shard-Lore */
+function tipHTML(row) {
+  const i = row.info;
+  const lines = [
+    `<p class="tt-name r-${i.rarity}">${esc(i.name)} Shard</p>`,
+    `<p class="tt-attr">${esc(i.attribute || "")}${row.level ? " " + ROMAN[row.level] : ""}</p>`,
+    `<p class="tt-eff">${esc(i.effect || "")}</p>`,
+  ];
+  if (row.unlocked) {
+    lines.push(`<p class="tt-lv">Level ${row.level}/10 &middot; ${row.count}/${row.max} Shards${
+      row.remaining ? ` &middot; noch ${row.remaining}` : " &middot; gemaxt"}</p>`);
+  } else {
+    lines.push('<p class="tt-miss">Noch nie syphont</p>');
+  }
+  if (row.box) lines.push(`<p class="tt-box">${row.box}x in deiner Hunting Box</p>`);
+  if ((row.ready || []).length) {
+    const [a, b] = row.ready[0];
+    lines.push(`<p class="tt-fuse">Jetzt fusebar: ${esc(a.info.name)} &times;${need(a)} + ${esc(b.info.name)} &times;${need(b)}</p>`);
+  }
+  lines.push(`<p class="tt-foot r-${i.rarity}">${esc(i.rarity.toUpperCase())} ${esc((i.category || "").toUpperCase())} SHARD (ID ${esc(i.shard_id)})</p>`);
+  lines.push('<p class="tt-hint">Klick fuer Details und Fusionen</p>');
+  return lines.join("");
 }
 
 function cardHTML(row) {
@@ -270,7 +359,7 @@ function cardHTML(row) {
 
   return `<article class="card" data-id="${esc(row.id)}" tabindex="0" role="button" aria-label="${esc(i.name)} Shard - Details">
     <div class="card-top ${rc}">
-      <span class="shard-mark"></span>
+      ${headHTML(i)}
       <h3>${esc(i.name)}</h3>
       <span class="rar">${esc(i.rarity)}</span>
     </div>
@@ -333,9 +422,32 @@ function visibleRows() {
   return rows;
 }
 
+const CATEGORY_ORDER = ["Forest", "Water", "Combat"];
+
+function boxHTML(rows) {
+  const groups = new Map();
+  for (const r of rows) {
+    const c = r.info.category || "Sonstige";
+    if (!groups.has(c)) groups.set(c, []);
+    groups.get(c).push(r);
+  }
+  const order = [...groups.keys()].sort((a, b) =>
+    (CATEGORY_ORDER.indexOf(a) + 99) % 99 - (CATEGORY_ORDER.indexOf(b) + 99) % 99);
+  return order.map((c) => {
+    const list = groups.get(c);
+    return `<section class="cat"><h4 class="cat-h">${esc(c)}<span>${list.length}</span></h4>`
+      + `<div class="islots">${list.map(islotHTML).join("")}</div></section>`;
+  }).join("");
+}
+
 function renderGrid() {
   const rows = visibleRows();
-  $("grid").innerHTML = rows.map(cardHTML).join("");
+  const cards = state.mode === "cards";
+  $("box").classList.toggle("is-cards", cards);
+  $("grid").className = cards ? "cards" : "";
+  $("grid").innerHTML = cards ? rows.map(cardHTML).join("") : boxHTML(rows);
+  $("legend").hidden = cards || !rows.length;
+  hideTip();
   const active = $("fFamily").value;
   if (active) {
     $("grid").querySelectorAll(`.tag.fam[data-family="${CSS.escape(active)}"]`)
@@ -380,7 +492,9 @@ function matchesRule(rule, info) {
           : info.rarity === bare;
       }
       if (["Forest", "Water", "Combat"].includes(a)) return info.category === a;
-      return (info.family || []).includes(a);
+      // Familie oder Attribut-Bereich. Die Quelle schreibt den Bereich mal als
+      // "Mining Shards", mal nur als "Mining" - beides muss greifen.
+      return (info.family || []).includes(a) || info.type === a;
     }));
 }
 
@@ -417,6 +531,7 @@ function slotHTML(label, rule, onlyOwned, excludeId) {
       ? `<span class="st have">${r.box}x in der Box</span>`
       : `<span class="st">${r.unlocked ? "Lvl " + r.level : "noch nie"}</span>`;
     return `<li><button type="button" class="pick r-${r.info.rarity}" data-open="${esc(r.id)}">
+      ${faceHTML(r.info)}
       <span class="nm">${esc(r.info.name)}</span>
       ${noDirect ? '<span class="only-fusion">nur Fusion</span>' : ""}
       ${st}
@@ -450,7 +565,10 @@ function comboList(id) {
     const ra = state.rowById.get(byShardId.get(a));
     const rb = state.rowById.get(byShardId.get(b));
     if (!ra || !rb) return null;
-    return { a: ra, b: rb, qty: qty || 1, ready: ra.box > 0 && rb.box > 0, half: (ra.box > 0) !== (rb.box > 0) };
+    // "bereit" heisst: genug Stueck von beiden Zutaten fuer eine Fusion
+    const same = ra.id === rb.id;
+    const ready = same ? haveEnough(ra, 2) : haveEnough(ra, 1) && haveEnough(rb, 1);
+    return { a: ra, b: rb, qty: qty || 1, ready, half: !ready && (ra.box > 0 || rb.box > 0) };
   }).filter(Boolean).sort((x, y) =>
     y.ready - x.ready ||
     y.half - x.half ||
@@ -508,7 +626,7 @@ function computeFusable() {
 
 function ingredientHTML(r) {
   const st = r.box > 0 ? `<span class="ing-box">${r.box}x</span>` : "";
-  return `<button type="button" class="ing r-${r.info.rarity}" data-open="${esc(r.id)}">${esc(r.info.name)}${st}</button>`;
+  return `<button type="button" class="ing r-${r.info.rarity}" data-open="${esc(r.id)}">${faceHTML(r.info)}<span class="ing-nm">${esc(r.info.name)}</span>${st}</button>`;
 }
 
 function combosHTML(id, onlyReady) {
@@ -527,11 +645,11 @@ function combosHTML(id, onlyReady) {
   return `<div class="d-block">
     <h3>Alle Kombis, die diesen Shard ergeben</h3>
     <label class="d-filter"><input type="checkbox" id="readyOnly" ${onlyReady ? "checked" : ""}>
-      <span>Nur Kombis, fuer die ich beide Zutaten in der Box habe</span></label>
+      <span>Nur Kombis, die ich mit meiner Box sofort fusen kann</span></label>
     <p class="d-none">${onlyReady ? `${list.length} von ${total}` : `${total} Kombis`}${
       list.length > CAP ? ` &middot; zeigt die ersten ${CAP}` : ""}</p>
     ${items ? `<ul class="combo-list">${items}</ul>`
-            : '<p class="d-none">Keine Kombi, bei der beide Zutaten schon in deiner Box liegen.</p>'}
+            : '<p class="d-none">Mit deinem Box-Bestand reicht es fuer keine dieser Kombis.</p>'}
   </div>`;
 }
 
@@ -551,14 +669,18 @@ function openDetail(id) {
     : "Noch nie syphont";
 
   const parts = [`
-    <div class="d-head ${rc}">
-      <span class="shard-mark"></span>
-      <h2>${esc(i.name)} Shard</h2>
-      <span class="rar">${esc(i.rarity)}</span>
-    </div>
-    <p class="d-attr">${esc(i.attribute || "")}</p>
-    <p class="d-effect">${esc(i.effect || "")}</p>
-    <p class="d-effect">${status}${row.box ? ` &middot; <span style="color:var(--good)">${row.box}x in der Box</span>` : ""}</p>`];
+    <div class="d-top">
+      ${islotHTML(row).replace("<button", '<div role="img"').replace(/<\/button>$/, "</div>")}
+      <div>
+        <div class="d-head ${rc}">
+          <h2>${esc(i.name)} Shard</h2>
+          <span class="rar">${esc(i.rarity)} &middot; ${esc(i.category || "")}</span>
+        </div>
+        <p class="d-attr">${esc(i.attribute || "")}</p>
+        <p class="d-effect">${esc(i.effect || "")}</p>
+        <p class="d-effect">${status}${row.box ? ` &middot; <span style="color:var(--good)">${row.box}x in der Box</span>` : ""}</p>
+      </div>
+    </div>`];
 
   if (direct.length) {
     parts.push(`<div class="d-block"><h3>So bekommst du ihn</h3><div class="d-lore">
@@ -636,6 +758,69 @@ function downloadCSV() {
   a.download = `shards-${state.playerName || "export"}.csv`;
   a.click();
   URL.revokeObjectURL(a.href);
+}
+
+/* ---------- Tooltip ---------- */
+
+function hideTip() {
+  const tip = $("tip");
+  if (tip) tip.hidden = true;
+  state.tipId = null;
+}
+
+function moveTip(x, y) {
+  const tip = $("tip");
+  const pad = 14;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let left = x + pad, top = y + pad;
+  if (left + w > window.innerWidth - 8) left = x - w - pad;
+  if (top + h > window.innerHeight - 8) top = Math.max(8, window.innerHeight - h - 8);
+  tip.style.left = Math.max(8, left) + "px";
+  tip.style.top = top + "px";
+}
+
+function onGridPointer(e) {
+  if (e.pointerType && e.pointerType !== "mouse") return;
+  const slot = e.target.closest(".islot");
+  if (!slot) { hideTip(); return; }
+  if (state.tipId !== slot.dataset.id) {
+    const row = state.rowById.get(slot.dataset.id);
+    if (!row) return;
+    state.tipId = slot.dataset.id;
+    $("tip").innerHTML = tipHTML(row);
+    $("tip").hidden = false;
+  }
+  moveTip(e.clientX, e.clientY);
+}
+
+/* ---------- Vitrine und Textur-Check ---------- */
+
+function fillShowcase() {
+  const pool = Object.values(state.db).filter((i) => skinUrl(i));
+  for (let k = pool.length - 1; k > 0; k--) {
+    const j = Math.floor(Math.random() * (k + 1));
+    [pool[k], pool[j]] = [pool[j], pool[k]];
+  }
+  $("showcase").innerHTML = pool.slice(0, 9).map((i) =>
+    `<span class="islot" title="${esc(i.name)} Shard">${headHTML(i)}</span>`).join("");
+}
+
+/* Ist textures.minecraft.net erreichbar? Wenn nicht (Firmennetz, Adblocker),
+   zeigen alle Koepfe den Kristall statt leerer Slots. */
+function probeSkins() {
+  const first = Object.values(state.db).find((i) => skinUrl(i));
+  if (!first) return;
+  const img = new Image();
+  img.onerror = () => document.documentElement.classList.add("no-skins");
+  img.src = skinUrl(first);
+}
+
+function setMode(mode) {
+  state.mode = mode === "cards" ? "cards" : "box";
+  store.set("hb_view", state.mode);
+  document.querySelectorAll(".viewswitch button").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.mode === state.mode)));
+  if (state.rows.length) renderGrid();
 }
 
 /* ---------- Ablauf ---------- */
@@ -729,9 +914,17 @@ function explain(err) {
     say("shards.json laesst sich nicht laden. Liegt die Datei neben der index.html?", "err");
     return;
   }
+  // Erst die alten Schreibweisen eintragen, dann die echten IDs drueberlegen.
+  // Wichtig, weil eine Alt-ID die echte ID eines anderen Shards sein kann:
+  // "humanoid_ruler" ist heute Drowned, war frueher Wetwing.
+  for (const [id, info] of Object.entries(state.db)) {
+    for (const alias of info.attribute_aliases || []) {
+      state.byAttrId.set(String(alias).toLowerCase(), id);
+    }
+    if (info.shard_id) state.shardIdIndex.set(info.shard_id, id);
+  }
   for (const [id, info] of Object.entries(state.db)) {
     if (info.attribute_id) state.byAttrId.set(String(info.attribute_id).toLowerCase(), id);
-    if (info.shard_id) state.shardIdIndex.set(info.shard_id, id);
   }
   $("dbCount").textContent = Object.keys(state.db).length;
 
@@ -747,10 +940,23 @@ function explain(err) {
     famSel.appendChild(o);
   });
 
+  probeSkins();
+  fillShowcase();
+
   const savedName = store.get("hb_name");
   const savedKey = store.get("hb_key");
   if (savedName) $("username").value = savedName;
   if (savedKey) $("apikey").value = savedKey;
+
+  setMode(store.get("hb_view") || "box");
+  document.querySelector(".viewswitch").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-mode]");
+    if (b) setMode(b.dataset.mode);
+  });
+
+  $("grid").addEventListener("pointermove", onGridPointer);
+  $("grid").addEventListener("pointerleave", hideTip);
+  window.addEventListener("scroll", hideTip, { passive: true });
 
   $("lookup").addEventListener("submit", lookup);
   $("csv").addEventListener("click", downloadCSV);
@@ -776,8 +982,8 @@ function explain(err) {
       renderGrid();
       return;
     }
-    const card = e.target.closest(".card");
-    if (card) openDetail(card.dataset.id);
+    const card = e.target.closest(".card, .islot");
+    if (card) { hideTip(); openDetail(card.dataset.id); }
   });
 
   $("grid").addEventListener("keydown", (e) => {
